@@ -1,0 +1,38 @@
+{
+  "name": "dbw23",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "connect-ensure-login": "^0.1.1",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.7",
+    "emoji-picker-element": "^1.11.3",
+    "express": "^4.17.1",
+    "express-sanitizer": "^1.0.5",
+    "express-session": "^1.17.2",
+    "mongodb": "^4.5.0",
+    "mongoose": "^6.3.1",
+    "node-fetch": "^2.6.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "socket.io": "^4.5.0",
+    "sync-request": "^6.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mictilt/DBW23.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mictilt/DBW23/issues"
+  },
+  "homepage": "https://github.com/Mictilt/DBW23#readme",
+  "description": ""
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UMa Farmácia</title>
+    <%- include('./partials/Style')%>
+    <%- include('./partials/Style_Utili')%>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<body>
+<%- include('./partials/Base_Logged')%>
+<% 
+let numTicket = 0;
+let nomeAtual = "";
+let emailAtual = "";
+console.log(tickets.User);
+tickets.forEach(function(tickets) {
+    if (tickets.User != null) {
+    if (tickets.state==true && tickets.User._id == user.id) {
+        numTicket++;
+    } 
+    if (tickets.User._id == user.id) {
+        nomeAtual = tickets.User.username
+        emailAtual = tickets.User.email;
+    }
+}
+});
+%>
+<main class="utilizador flex-fill">
+    <div class="uti_detalhes">
+        <h2>Meus Detalhes:</h2>
+        <h4>Tickets Resolvidos</h4><span><%=numTicket%></span>
+        <h4>Nome</h4>
+        <%=udocs.username%>
+        <h4>Email</h4>
+        <%=udocs.email%>
+    </div>
+    <div class="introdRes">
+        <h2>Adicionar resposta:</h2>
+        <form  action = "/user/<%=udocs._id%>" method="post">
+        <select name="responses">
+            <option value = ""></option>
+            <% fdocs.forEach(function(faq) { %>
+            <option value = "<%=faq.answer%>"><%=faq.answer%></option>
+            <% });%>
+            <% tickets.forEach(function(ticket) { %>
+            <%if(ticket.answers != ""){%>
+            <option value = "<%=ticket.answers%>"><%=ticket.answers%></option>
+            <%}%>
+            <% });%>
+        </select>
+            <input type="hidden" name="username" value="<%=udocs.username%>">
+            <input type="hidden" name="email" value="<%=udocs.email%>">
+            <input type="hidden" name="password" value="<%=udocs.password%>">
+        <button>Inserir Resposta</button>
+            </form>
+    </div>
+    <div id="img">
+        <img src="image/farma.png">
+    </div>
+</main>
+<%-include('./partials/Footer')%>
+</body>
+</html>
