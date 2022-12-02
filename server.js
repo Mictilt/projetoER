@@ -20,6 +20,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('assets'));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/carreira', express.static(path.join(__dirname, 'public')))
+app.use('/frequencia', express.static(path.join(__dirname, 'public')))
 app.use('/faq', express.static(path.join(__dirname, 'public')))
 app.use('/tickets', express.static(path.join(__dirname, 'public')))
 app.use('/faq/edit', express.static(path.join(__dirname, 'public')))
@@ -38,6 +39,11 @@ const Faq = require("./models/faq");
 const carreiraRoutes = require('./routes/carreira');
 app.use('/carreira', carreiraRoutes);
 const carreira = require("./models/carreira");
+
+// frequencia
+const frequenciaRoutes = require('./routes/frequencia');
+app.use('/frequencia', frequenciaRoutes);
+const frequencia = require("./models/frequencia");
 
 //User routes and use them as middleware, i.e. every time a request url matches '/users' the appropriate route will be followed according to the HTTP verb (app.get/post/put/patch/delete)
 const userRoutes = require('./routes/users');
