@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "name": "ER",
-=======
   "name": "prjetoer",
->>>>>>> 4bb30718409fc1e39e2aa06e774205d70104bf5e
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {

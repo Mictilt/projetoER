@@ -11,7 +11,7 @@ exports.listCarreira = (req, res) => {
     CarreiraModel.carreiraList((docs, err) => {
         const isAuthenticated = !!req.user;
         const num = 0;
-        if(!err) res.status(200).render('faq',{isAuthenticated,carreira:docs,num});
+        if(!err) res.status(200).render('carreira',{isAuthenticated,carreira:docs,num});
         else res.status(500).send({message: err.message});
     });
 };
@@ -20,7 +20,7 @@ exports.listCarreiraPool = (req, res) => {
     CarreiraModel.carreiraList((docs, err) => {
         const isAuthenticated = !!req.user;
         const num = 0;
-        if(!err) res.status(200).render('faqpool',{isAuthenticated,carreira:docs,num});
+        if(!err) res.status(200).render('carreirapool',{isAuthenticated,carreira:docs,num});
         else res.status(500).send({message: err.message});
     });
 };
