@@ -11,7 +11,7 @@
 <%- include('./partials/Base_Notlogged')%>
 <main class="row">
     <form action="/login" method="post">
-    <h1 class="col-lg-12 columnStyle">Entre na sua conta UmaFarmacia: </h1>
+    <h1 class="col-lg-12 columnStyle">Entre na sua conta FACIL: </h1>
     <label class="col-lg-12 columnStyle p-3 " >Nome </label><br>
     <input name="username" type="text" placeholder="Insira o seu nome" class="col-lg-12  columnStyle">
     <br >
@@ -20,11 +20,12 @@
     <div class="entrarconta">
         <button class="btn_entarconta" type="submit" value="Submit">Entrar Conta</button>
     </div>   
-      
-    </form>
     <div class="singupb">
-        <a href="/signup" target="_blank"><button>SignUp</button></a>
+        <a class="singupa" href="/signup" target="_blank">SignUp</a>
     </div>
+    
+    </form>
+    
     
 </main>
 
