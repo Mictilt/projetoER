@@ -108,7 +108,7 @@ app.post(
     })
 
 );
-/*//Página de signup
+//Página de signup
 app.get('/signup/', function (req, res){
     res.render('signup',{});
 });
@@ -124,7 +124,7 @@ app.post("/signup",function(req,res){
         res.redirect(307, '/login');
     });
 });
-*/
+
 const io = require('socket.io')(server);
 var people = {};
 

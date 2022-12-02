@@ -1,5 +1,5 @@
 {
-  "name": "dbw23",
+  "name": "prjetoer",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
@@ -28,11 +28,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mictilt/DBW23.git"
+    "url": "git+https://github.com/Mictilt/projetoER.git"
   },
   "bugs": {
-    "url": "https://github.com/Mictilt/DBW23/issues"
+    "url": "https://github.com/Mictilt/projetoER/issues"
   },
-  "homepage": "https://github.com/Mictilt/DBW23#readme",
+  "homepage": "https://github.com/Mictilt/projetoER#readme",
   "description": ""
 }
