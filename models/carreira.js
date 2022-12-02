@@ -42,8 +42,8 @@ exports.patchCarreira = (id, carreiraData, cb) => {
         .then(() => cb())
         .catch(err => cb(err));
 };
-
-exports.frequenciaRemoveById = (carreiraId, cb) => {
+        
+exports.carreiraRemoveById = (carreiraId, cb) => {
 
     Carreira.deleteMany({ _id: carreiraId })
         .exec()

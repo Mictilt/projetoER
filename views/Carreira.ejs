@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>FACIL</title>
     <%- include('./partials/Style')%>
-    <%- include('./partials/Style_Faq')%>
+    <%- include('./partials/Style_Carreira')%>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <body>
@@ -14,147 +14,32 @@
     <%-include('./partials/Base_Notlogged')%>
 <%} %>
 <main>
-<h3 class="paddingt paddingl">Questões genéricas</h3>
+<h3 class="paddingt paddingl">Carreira</h3>
     <div class="accordion paddingl" id="accordionExample">
         <div class="card widthcard">
-            <%faq.forEach(function (faq) {%>
-                <% if (faq.topic == "questaogeral"){%>
-                    <% if (faq.pinned == true){%>
+            <%carreira.forEach(function (carreira) {%>                                  
                     <div class="card-header colapse" id="heading<%=num%>">
                         <h2 class="m-0">
                             <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
-                            <%=faq.question%> - pinned
+                            <%=carreira.nome%>
                             </button>
                         </h2>
                     </div>
 
                     <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
                         <div class="card-body faqcollapse">
-                            <%=faq.answer%>
+                            <%=carreira.nome%>
                         </div>
                     </div>
                     <%num = num + 1%>
-                        <%} %>
-                    <%} %>
-                <% }); %>
-                <%faq.forEach(function (faq) {%>
-                    <% if (faq.topic == "questaogeral"){%>
-                        <% if (faq.pinned == false){%>
-                    <div class="card-header colapse" id="heading<%=num%>">
-                        <h2 class="m-0">
-                            <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
-                                <%=faq.question%>
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
-                        <div class="card-body faqcollapse">
-                            <%=faq.answer%>
-                        </div>
-                    </div>
-                    <%num = num + 1%>
-                    <%} %>
-                <%} %>
+                
             <% }); %>
         </div>
     </div>
-    <h3 class="paddingt paddingl">Medicação</h3>
-    <div class="accordion paddingl" id="accordionExample">
-        <div class="card widthcard">
-            <%faq.forEach(function (faq) {%>
-                <% if (faq.topic == "medicacao"){%>
-                    <% if (faq.pinned == true){%>
-                    <div class="card-header colapse" id="heading<%=num%>">
-                        <h2 class="m-0">
-                            <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
-                                <%=faq.question%>
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
-                        <div class="card-body faqcollapse">
-                            <%=faq.answer%>
-                        </div>
-                    </div>
-                    <%num = num + 1%>
-                    <%} %>
-                <%} %>
-            <% }); %>
-                <%faq.forEach(function (faq) {%>
-                    <% if (faq.topic == "medicacao"){%>
-                        <% if (faq.pinned == false){%>
-
-                        <div class="card-header colapse" id="heading<%=num%>">
-                            <h2 class="m-0">
-                                <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
-                                    <%=faq.question%>
-                                </button>
-                            </h2>
-                        </div>
-
-                        <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
-                            <div class="card-body faqcollapse">
-                                <%=faq.answer%>
-                            </div>
-                        </div>
-                        <%num = num + 1%>
-                        <%} %>
-                    <%} %>
-                <% }); %>
-        </div>
-    </div>
-    <h3 class="paddingt paddingl">Compras</h3>
-    <div class="accordion paddingl" id="accordionExample">
-        <div class="card widthcard">
-            <%faq.forEach(function (faq) {%>
-                <% if (faq.topic == "compras"){%>
-                    <% if (faq.pinned == true){%>
-                    <div class="card-header colapse" id="heading<%=num%>">
-                        <h2 class="m-0">
-                            <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
-                                <%=faq.question%>
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
-                        <div class="card-body faqcollapse">
-                            <%=faq.answer%>
-                        </div>
-                    </div>
-                    <%num = num + 1%>
-                    <%} %>
-                <%} %>
-            <% }); %>
-                <%faq.forEach(function (faq) {%>
-                    <% if (faq.topic == "compras"){%>
-                        <% if (faq.pinned == false){%>
-                        <div class="card-header colapse" id="heading<%=num%>">
-                            <h2 class="m-0">
-                                <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
-                                    <%=faq.question%>
-                                </button>
-                            </h2>
-                        </div>
-
-                        <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
-                            <div class="card-body faqcollapse">
-                                <%=faq.answer%>
-                            </div>
-                        </div>
-                        <%num = num + 1%>
-                    <%} %>
-                <%} %>
-            <% }); %>
-        </div>
-    </div>
-
     <% if (isAuthenticated){ %>
     <div class="paddingt paddinglbutt paddingb">
-    <a href="/faq/create"><button>Criar Pergunta</button></a>
-    <a href="/faq/pool"><button>Ver Todas As Perguntas</button></a>
+    <a href="/carreira/create"><button>Criar Carreira</button></a>
+    <a href="/carreira/pool"><button>Ver Todas As Carreiras</button></a>
     </div>
     <%} %>
 </main>
