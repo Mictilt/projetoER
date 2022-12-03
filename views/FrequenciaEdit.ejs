@@ -15,15 +15,15 @@
 <%} %>
 <main>
     <div class="collorblack">
-        <form action="/carreira/edit/<%=carreira._id%>" method="post" class="formcreate">
+        <form action="/frequencia/edit/<%=frequencia._id%>" method="post" class="formcreate">
             <h1>Editar Carreira</h1>
-            <label class="col-lg-12 columnStyle p-3">Nome </label><br>
-            <input name="nome" type="text" value="<%=carreira.nome%>" placeholder="Insira a carreira" class="col-lg-12 columnStyle perguntainput">           
+            <label class="col-lg-12 columnStyle p-3">Hora </label><br>
+            <input name="hora" type="text" value="<%=frequencia.hora%>" placeholder="Insira a hora" class="col-lg-12 columnStyle perguntainput">           
             <input name ="User" type="hidden" value="<%=user.id%>">            
             <div class="container">
                 <div class="row">
                     <div class="criarconta divbutton">
-                        <button id="btn_criarconta" type="submit" value="Submit">Mudar Carreira</button>
+                        <button id="btn_criarconta" type="submit" value="Submit">Mudar Frequência</button>
                     </div>
                 </div>
             </div>

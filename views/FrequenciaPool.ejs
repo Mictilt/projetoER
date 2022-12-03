@@ -16,33 +16,33 @@
 <main>
     <div class ="division">
         <div>
-            <h1 class="collorblack">Pool de Carreiras</h1>
+            <h1 class="collorblack">Pool de Frequências</h1>
         </div>
         <div class="accordion paddingl" id="accordionExample">
             <div class="card widthcard">
-                <%carreira.forEach(function (carreira) {%>
+                <%frequencia.forEach(function (frequencia) {%>
                 <div class="card-header colapse" id="heading<%=num%>">
                     <h2 class="m-0">
                         <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
-                            <%=carreira.nome%>
+                            <%if (frequencia.hora < 10){%>0<%}%><%=frequencia.hora%>:<%if (frequencia.minutos < 10){%>0<%}%><%=frequencia.minutos%>
                         </button>
                     </h2>
                 </div>
                 <!--
                 <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
                     <div class="card-body faqcollapse">
-                        <%=carreira.nome%>
+                        <%if (frequencia.hora < 10){%>0<%}%><%=frequencia.hora%>:<%if (frequencia.minutos < 10){%>0<%}%><%=frequencia.minutos%>
                     </div>
                 </div>
                 -->
                 <div class="list-inline-item">
                     <button>
-                        <a href="edit/<%=carreira._id%>">Editar</a>
+                        <a href="edit/<%=frequencia._id%>">Editar</a>
                     </button>
                 </div>
                 <div class="list-inline-item">
-                    <form action="delete/<%=carreira._id%>" method="post">
-                            <a href="delete/<%=carreira._id%>"><button>Apagar</button></a>
+                    <form action="delete/<%=frequencia._id%>" method="post">
+                            <a href="delete/<%=frequencia._id%>"><button>Apagar</button></a>
                     </form>
                 </div>
                 <%num = num + 1%>

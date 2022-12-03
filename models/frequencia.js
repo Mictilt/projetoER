@@ -1,16 +1,18 @@
 const mongoose = require('./mongooseConfigs').mongoose;
 const Schema = mongoose.Schema;
+const { Timestamp } = require('mongodb');
 const fetch = require('node-fetch');
 //Our user schema
 const frequenciaSchema = new mongoose.Schema({
-    hora:[Number]
+    hora:[Number],
+    minutos:[Number]
 });
 
 //Create the actual model
 const Frequencia = mongoose.model('Frequencias', frequenciaSchema);
 
 exports.frequenciaFindById = (id, cb) => {
-    Frequencia.findById(id, {  _id:1, hora:1})
+    Frequencia.findById(id, {  _id:1, hora:1, minutos:1})
         .exec()
         .then(doc => cb(doc))
         .catch(err => cb(null, err));
@@ -28,7 +30,7 @@ exports.createFrequencia = (frequenciaData, cb) => {
 
 exports.frequenciaList = (cb) => {
 
-    Frequencia.find({ }, { _id:1, hora:1})
+    Frequencia.find({ }, { _id:1, hora:1, minutos:1})
         .exec()
         .then((docs) => cb(docs))
         .catch(err => cb(err));
