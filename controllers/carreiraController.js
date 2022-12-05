@@ -16,6 +16,7 @@ exports.listCarreira = (req, res) => {
     });
 };
 
+
 exports.listCarreiraPool = (req, res) => {
     CarreiraModel.carreiraList((docs, err) => {
         const isAuthenticated = !!req.user;
