@@ -13,7 +13,8 @@ exports.insert = (req, res) => {
 exports.listHorario = (req, res) => {
     HorarioModel.horarioList((docs, err) => {
         const isAuthenticated = !!req.user;
-        const num = 0;
+        const num = 0; 
+        
         if(!err) res.status(200).render('horario',{isAuthenticated,horario:docs,num});
         else res.status(500).send({message: err.message});
     });

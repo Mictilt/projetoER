@@ -21,15 +21,19 @@
                 <div class="card-header colapse" id="heading<%=num%>">
                     <h2 class="m-0">
                         <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
-                            <%=horario.Carreira._id%>
+                            <%=horario.Carreira.nome%>
+                            <%horario.frequencia.forEach(function (hora) {%>      
+                                <%=hora%>
+                                <% }); %>
                         </button>
                     </h2>
                 </div>
 
                 <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
                     <div class="card-body faqcollapse">
+                        //<%if (horario.Frequencia.hora < 10){%>0<%}%><%=horario.Frequencia.hora%>:<%if (horario.Frequencia.minutos < 10){%>0<%}%><%=horario.Frequencia.minutos%>
                         
-                    </div>
+                        </div>
                 </div>
                 <%num = num + 1%>
             
