@@ -1,14 +1,48 @@
 const HorarioModel = require('../models/horario');
 const FrequenciaModel = require('../models/frequencia');
 const CarreiraModel = require('../models/carreira');
+const ObjectId = require('mongodb').ObjectId;
+
 
 
 exports.insert = (req, res) => {
-    HorarioModel.createHorario(req.body, (doc, err) => {
-        if(!err) res.redirect("/horario");
-        else res.redirect("/horario/create");
+    CarreiraModel.carreiraFindOne(req.Carreira,(cdocs,err) =>{
+        if (err) res.status(500).send({message: err.message});     
+        FrequenciaModel.frequenciaFindOne(req.Frequencia,(fdocs,err) =>{
+            if (err) res.status(500).send({message: err.message});                        
+            HorarioModel.findHorarioCarreriaID (req.body.Carreira, (fhdoc,err) => {
+                //console.log("---------\n"+fhdoc[0]._id+"\n-------\n");
+                //console.log("teste\n"+req.body.Carreira);
+                console.log("teste\n"+fhdoc[0].lenght);
+                if(fhdoc.lenght)
+                HorarioModel.findHorarioFrequenciaID (req.body.Frequencia, (fhfdoc,err) => {
+                    if(fhfdoc){                                     
+                
+                        res.redirect("/horario");
+                    }else{
+                HorarioModel.updateHorarioFrequencia(fhdoc[0]._id,req.body, (doc,err) => {                
+                    if(!err) res.redirect("/horario");
+                    else res.redirect("/horario/create");
+                });
+            }
+            
+        });
+        else{
+            HorarioModel.createHorario(req.body, (doc,err) => {
+                if(!err) res.redirect("/horario");
+                else res.redirect("/horario/create");
+            });
+
+        };
     });
+});
+});
 };
+                
+              
+                    
+                
+                           
 
 exports.listHorario = (req, res) => {
     HorarioModel.horarioList((docs, err) => {
@@ -18,6 +52,7 @@ exports.listHorario = (req, res) => {
         if(!err) res.status(200).render('horario',{isAuthenticated,horario:docs,num});
         else res.status(500).send({message: err.message});
     });
+    
 };
 
 exports.listCreateHorario = (req, res) => {
