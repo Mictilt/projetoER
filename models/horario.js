@@ -40,9 +40,9 @@ exports.createHorario = (horarioData, cb) => {
 
 exports.horarioList = (cb) => {
 
-    Horario.find({ }, {   _id:1, Carreira:1,Frequencia:1})
-        .populate({ path: 'Carreira', model: Carreira })
-        .populate({ path: 'Frequencia', model: Frequencia })
+    Horario.find({ }, { _id:1, Carreira:1,Frequencia:1})
+        .populate({ path: 'Carreira', model: Carreira.carreiraModel() })
+        .populate({ path: 'Frequencia', model: Frequencia.frequenciaModel() })
         .exec()
         .then((docs) => cb(docs))
         .catch(err => cb(err));

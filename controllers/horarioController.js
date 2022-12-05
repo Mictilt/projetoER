@@ -14,6 +14,9 @@ exports.listHorario = (req, res) => {
     HorarioModel.horarioList((docs, err) => {
         const isAuthenticated = !!req.user;
         const num = 0;
+        console.log(19);
+        console.log(docs._id);
+        console.log(20);
         if(!err) res.status(200).render('horario',{isAuthenticated,horario:docs,num});
         else res.status(500).send({message: err.message});
     });
