@@ -9,6 +9,13 @@ router.get('/', jsonParser, function (req, res) {
     pesquisaController.listPesquisaFrequencia(req,res);
 });
 
+router.post('/frequencia', jsonParser, function (req, res) {
+    console.log("\nlista frequencias\n");
+    //pesquisa horarios com carreira
+    pesquisaController.listPesquisaHorarios(req,res);
+});
+
+
 
 //Let's expose these routes
 module.exports = router;
