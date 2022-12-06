@@ -11,33 +11,44 @@ exports.insert = (req, res) => {
     //     FrequenciaModel.frequenciaFindOne(req.Frequencia,(fdocs,err) =>{
     //         if (err) res.status(500).send({message: err.message});                        
     HorarioModel.findHorarioCarreriaID(req.body.Carreira, (hcdoc, err) => {
-        console.log("---------\n" + err + "\n-------\n");
-        console.log("---------\n" + hcdoc.Carreira + "\n-------\n");
+        console.log("---------\n" + hcdoc + "\n-------\n");
         console.log("********\n" + req.body.Carreira + "\n********\n");
-        console.log("teste\n" + hcdoc);
-        if (hcdoc?.lenght ?? false) {
-            HorarioModel.findHorarioFrequenciaID(req.body.Frequencia, (hfdoc, err) => {
-                if (hfdoc ?? false) {
-
-                    res.redirect("/horario");
-                } else {
-                    HorarioModel.updateHorarioFrequencia(hcdoc[0]._id, req.body, (hdoc, err) => {
-                        if (!err) { res.redirect("/horario"); }
-                        else { res.redirect("/horario/create"); }
-                    });
-                }
-
-            })
-        }
-        else {
+        console.log("valor hcdoc\n" + hcdoc+"\n---------");
+        if(hcdoc[0] == null){
             HorarioModel.createHorario(req.body, (doc, err) => {
                 if (!err) { res.redirect("/horario"); }
                 else { res.redirect("/horario/create"); }
-            });
+        
+        //console.log("true")
+        //res.redirect("/horario");
+        // if (hcdoc?.lenght ?? false) {
+        //HorarioModel.findHorarioFrequenciaID(req.body.Frequencia, (hfdoc, err) => {
+        //         if (hfdoc ?? false) {
 
-        };
+        //             res.redirect("/horario");
+        //         } else {
+        //             HorarioModel.updateHorarioFrequencia(hcdoc[0]._id, req.body, (hdoc, err) => {
+        //                 if (!err) { res.redirect("/horario"); }
+        //                 else { res.redirect("/horario/create"); }
+        //             });
+        //         }
+
+        //     })
+        // }
+        // else {
+        //     HorarioModel.createHorario(req.body, (doc, err) => {
+        //         if (!err) { res.redirect("/horario"); }
+        //         else { res.redirect("/horario/create"); }
+        //     });
+
+        // };
     });
-    //});
+    }
+    else{
+        res.redirect("/horario");
+
+    };
+    })
     //});
 };
 
