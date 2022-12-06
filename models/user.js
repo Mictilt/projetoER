@@ -7,7 +7,7 @@ const Ticket = require("../models/ticket");
 const userSchema = new mongoose.Schema({
     username: String,
     email: String,
-    tipo: String,
+    tipo: String, //1 habitante local, 2 visitante, 3 motorista, 4 admin
     password: String,
 });
 
