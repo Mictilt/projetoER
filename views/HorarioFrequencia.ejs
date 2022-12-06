@@ -14,37 +14,25 @@
     <%-include('./partials/Base_Notlogged')%>
 <%} %>
 <main>
-<h3 class="paddingt paddingl">Horário</h3>
+<h3 class="paddingt paddingl">Lista de Frequências  <%=horario[0].Carreira.nome%></h3>
     <div class="accordion paddingl" id="accordionExample">
         <div class="card widthcard">
-            <%horario.forEach(function (horario) {%>                                  
-                <div class="card-header colapse" id="heading<%=num%>">
-                    <h2 class="m-0">
-                        <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
-                            <%=horario.Carreira.nome%>
-                            
-                                
-                        </button>
-                    </h2>
-                </div>
-                <%horario.Frequencia.forEach(function (frequencia) {%>
-                <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
+            <%horario[0].Frequencia.forEach(function (frequencia) {%>
+                
                     
                     <div class="card-body faqcollapse">
                         <%if (frequencia.hora < 10){%>0<%}%><%=frequencia.hora%>:<%if (frequencia.minutos < 10){%>0<%}%><%=frequencia.minutos%>
                         
                         </div>
-                </div>
+                
                 <% }); %>
-                <%num = num + 1%>
+                
             
-        <% }); %>
+       
         </div>
     </div>
     <% if (isAuthenticated){ %>
     <div class="paddingt paddinglbutt paddingb">
-    <a href="/horario/create"><button>Criar Horário</button></a>
-    <a href="/horario/pool"><button>Ver Todos Os Horários</button></a>
     </div>
     <%} %>
 </main>
