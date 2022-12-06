@@ -120,7 +120,7 @@ app.get('/signup/', function (req, res){
 app.post("/signup",function(req,res){
 
     //New User in the DB
-    const instance = new login({ username: req.body.username, password: req.body.password, email: req.body.email });
+    const instance = new login({ username: req.body.username, password: req.body.password, email: req.body.email, tipo: req.body.tipo });
     instance.save(function (err, instance) {
         if (err) return console.error(err);
 
