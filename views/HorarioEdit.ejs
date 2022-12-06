@@ -17,11 +17,11 @@
     <div class="collorblack">
         <form action="/horario/edit/<%=horario._id%>" method="post" class="formcreate">
             <h1>Editar Horarios</h1>
-            <!-- <label class="col-lg-12 columnStyle p-3">Hora </label><br>
-            <input name="hora" type="text" value="<%=horario.Frequencia.hora%>" placeholder="Insira a hora" class="col-lg-12 columnStyle perguntainput">
+            <label class="col-lg-12 columnStyle p-3">Hora </label><br>
+            <input name="hora" type="text" value="<%=horario.Frequencia[0].hora%>" placeholder="Insira a hora" class="col-lg-12 columnStyle perguntainput">
             <label class="col-lg-12 columnStyle p-3">Minutos </label><br>
-            <input name="minutos" type="text" value="<%=horario.Frequencia.minutos%>" placeholder="Insira a hora" class="col-lg-12 columnStyle perguntainput">           
-            <input name ="User" type="hidden" value="<%=user.id%>">             -->
+            <input name="minutos" type="text" value="<%=horario.Frequencia[0].minutos%>" placeholder="Insira a hora" class="col-lg-12 columnStyle perguntainput">           
+            <input name ="User" type="hidden" value="<%=user.id%>">            
             <div class="container">
                 <div class="row">
                     <div class="criarconta divbutton">

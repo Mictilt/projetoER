@@ -22,8 +22,8 @@ const Horario = mongoose.model('Horarios', horarioSchema);
 
 exports.horarioFindById = (id, cb) => {
         Horario.findById(id, {  _id:1, Carreira:1,Frequencia:1})
-        .populate({ path: 'Carreira', model: Carreira })
-        .populate({ path: 'Frequencia', model: Frequencia })
+        .populate({ path: 'Carreira', model: Carreira.carreiraModel() })
+        .populate({ path: 'Frequencia', model: Frequencia.frequenciaModel() })
         .exec()
         .then(doc => cb(doc))
         .catch(err => cb(null,err));
