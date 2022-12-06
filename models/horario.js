@@ -49,7 +49,7 @@ exports.horarioList = (cb) => {
         .catch(err => cb(err));
 };
 exports.findHorarioCarreriaID = (id,cb) => {
-    //console.log("valor do id models horatio"+id+"\n");
+    //console.log("valor do id models horario"+id+"\n");
     Horario.find({Carreira: id }, { _id:1, Carreira:1,Frequencia:1})
         .populate({ path: 'Carreira', model: Carreira.carreiraModel() })
         .populate({ path: 'Frequencia', model: Frequencia.frequenciaModel() })
@@ -58,9 +58,9 @@ exports.findHorarioCarreriaID = (id,cb) => {
         .catch(err => cb(err));
 };
 
-exports.findHorarioFrequenciaID = (id,cb) => {
-    console.log("valor do id models horatio"+id+"\n");
-    Horario.find({Frequencia: id }, { _id:1, Carreira:1,Frequencia:1})
+exports.findHorarioFrequenciaID = (id,idC,cb) => {
+    console.log("valor do id models horario"+id+"\n");
+    Horario.find({Frequencia: id, Carreira: idC }, { _id:1, Carreira:1,Frequencia:1})
         .populate({ path: 'Carreira', model: Carreira.carreiraModel() })
         .populate({ path: 'Frequencia', model: Frequencia.frequenciaModel() })
         .exec()

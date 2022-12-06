@@ -19,7 +19,7 @@ exports.insert = (req, res) => {
                 if (!err) { res.redirect("/horario"); }
                 else { res.redirect("/horario/create"); }
         
-        //console.log("true")
+        //console.log("true");
         //res.redirect("/horario");
         // if (hcdoc?.lenght ?? false) {
         //HorarioModel.findHorarioFrequenciaID(req.body.Frequencia, (hfdoc, err) => {
@@ -45,11 +45,25 @@ exports.insert = (req, res) => {
     });
     }
     else{
-        res.redirect("/horario");
+        HorarioModel.findHorarioFrequenciaID(req.body.Frequencia,req.body.Carreira, (hfdoc, err) => {
+            if(hfdoc[0] == null){  
+                console.log("true")
+                console.log("---------\n" + hcdoc[0]._id + "\n-------\n");
+                HorarioModel.updateHorarioFrequencia(hcdoc[0]._id, req.body, (hdoc, err) => {
+                    if (!err)  res.redirect("/horario"); 
+                        else  res.redirect("/horario/create"); 
+                });
+        }
+        else{
+            
+            console.log("\nfalse")
+            console.log("---------\n" + hcdoc[0]._id + "\n-------\n");
+            res.redirect("/horario");
+        }
 
-    };
-    })
-    //});
+    });
+    }
+    });
 };
 
 
