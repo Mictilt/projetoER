@@ -29,6 +29,7 @@ exports.horarioFindById = (id, cb) => {
         .catch(err => cb(null,err));
 };
 
+
 exports.createHorario = (horarioData, cb) => {
     const horario = new Horario(horarioData);
 
@@ -47,13 +48,48 @@ exports.horarioList = (cb) => {
         .then((docs) => cb(docs))
         .catch(err => cb(err));
 };
+exports.findHorarioCarreriaID = (id,cb) => {
+    //console.log("valor do id models horatio"+id+"\n");
+    Horario.find({Carreira: id }, { _id:1, Carreira:1,Frequencia:1})
+        .populate({ path: 'Carreira', model: Carreira.carreiraModel() })
+        .populate({ path: 'Frequencia', model: Frequencia.frequenciaModel() })
+        .exec()
+        .then((docs) => cb(docs))
+        .catch(err => cb(err));
+};
+
+exports.findHorarioFrequenciaID = (id,cb) => {
+    console.log("valor do id models horatio"+id+"\n");
+    Horario.find({Frequencia: id }, { _id:1, Carreira:1,Frequencia:1})
+        .populate({ path: 'Carreira', model: Carreira.carreiraModel() })
+        .populate({ path: 'Frequencia', model: Frequencia.frequenciaModel() })
+        .exec()
+        .then((docs) => cb(docs))
+        .catch(err => cb(err));
+};
+
+    //updateHorarioFrequencia
+
+exports.updateHorarioFrequencia = (id, horarioData, cb) => {
+
+    //status code 204 should be returned if we don't want to send back the updated model
+    console.log("\n**********\n "+id+"\n*********\n")
+    console.log("\n**********\n "+horarioData.Frequencia+"\n*********\n")
+    Horario.findByIdAndUpdate({_id: id}, {$push: {Frequencia:horarioData.Frequencia}}, {new:true, overwrite:true, projection: {    _id:0, Carreira:1,Frequencia:1}})
+        .populate({ path: 'Carreira', model: Carreira.carreiraModel() })
+        .populate({ path: 'Frequencia', model: Frequencia.frequenciaModel() })
+        .exec()
+        .then(() => cb())
+        .catch(err => cb(err));
+};
+
 
 exports.patchHorario = (id, horarioData, cb) => {
 
     //status code 204 should be returned if we don't want to send back the updated model
     Horario.findOneAndUpdate({_id: id}, horarioData, {new:true, overwrite:true, projection: {    _id:0, Carreira:1,Frequencia:1}})
-        .populate({ path: 'Carreira', model: Carreira })
-        .populate({ path: 'Frequencia', model: Frequencia })
+        .populate({ path: 'Carreira', model: Carreira.carreiraModel() })
+        .populate({ path: 'Frequencia', model: Frequencia.frequenciaModel() })
         .exec()
         .then(() => cb())
         .catch(err => cb(err));

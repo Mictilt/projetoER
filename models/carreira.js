@@ -34,6 +34,15 @@ exports.carreiraList = (cb) => {
         .catch(err => cb(err));
 };
 
+exports.carreiraFindOne = (id, cb) => {
+
+    //status code 204 should be returned if we don't want to send back the updated model
+    Carreira.findOne({_id: id})
+        .exec()
+        .then(() => cb())
+        .catch(err => cb(err));
+};
+
 exports.patchCarreira = (id, carreiraData, cb) => {
 
     //status code 204 should be returned if we don't want to send back the updated model

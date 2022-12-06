@@ -36,6 +36,15 @@ exports.frequenciaList = (cb) => {
         .catch(err => cb(err));
 };
 
+exports.frequenciaFindOne = (id, cb) => {
+
+    //status code 204 should be returned if we don't want to send back the updated model
+    Frequencia.findOne({_id: id})
+        .exec()
+        .then(() => cb())
+        .catch(err => cb(err));
+};
+
 exports.patchFrequencia = (id, frequenciaData, cb) => {
 
     //status code 204 should be returned if we don't want to send back the updated model
