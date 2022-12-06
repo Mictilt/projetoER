@@ -23,6 +23,7 @@ app.use('/faq', express.static(path.join(__dirname, 'public')))
 app.use('/tickets', express.static(path.join(__dirname, 'public')))
 app.use('/faq/edit', express.static(path.join(__dirname, 'public')))
 app.use('/tickets/ticketsEspecifico', express.static(path.join(__dirname, 'public')))
+app.use('/reserva', express.static(path.join(__dirname, 'public')))
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({extended:false});
 app.use(urlencodedParser);
@@ -36,6 +37,9 @@ const Faq = require("./models/faq");
 //User routes and use them as middleware, i.e. every time a request url matches '/users' the appropriate route will be followed according to the HTTP verb (app.get/post/put/patch/delete)
 const userRoutes = require('./routes/users');
 app.use('/user', userRoutes);
+
+const reservaRoutes = require('./routes/reservas');
+app.use('/reserva', reservaRoutes);
 const mongoose = require('mongoose');
 const User = require("./models/user");
 const userController = require("./controllers/userController");

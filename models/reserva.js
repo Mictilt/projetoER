@@ -36,8 +36,8 @@ const Reserva = mongoose.model('Reservas', reservaSchema);
 exports.reservaFindById = (id, cb) => {
     Reserva.findById(id, {  _id:1, User:1, Motorista:1, Comentario:1, Classificacao:1, data:1, hora:1, acompanhante:1, mobilidadeReduzida:1})
         .populate({ path: 'User', model: User.userModel() })
-        .populate({ path: 'Comentario', model: Comentario })
-        .populate({ path: 'Classificacao', model: Classificacao })
+        //.populate({ path: 'Comentario', model: Comentario })
+        //.populate({ path: 'Classificacao', model: Classificacao })
         .exec()
         .then(doc => cb(doc))
         .catch(err => cb(null, err));
