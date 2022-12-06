@@ -54,6 +54,11 @@ const horarioRoutes = require('./routes/horario');
 app.use('/horario', horarioRoutes);
 const horario = require("./models/horario");
 
+// pesquisa frequencia
+const pesquisaRoutes = require('./routes/pesquisa');
+app.use('/pesquisa', pesquisaRoutes);
+
+
 //User routes and use them as middleware, i.e. every time a request url matches '/users' the appropriate route will be followed according to the HTTP verb (app.get/post/put/patch/delete)
 const userRoutes = require('./routes/users');
 app.use('/user', userRoutes);
