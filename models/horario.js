@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const fetch = require('node-fetch');
 const Carreira = require("../models/carreira");
 const Frequencia = require("./frequencia");
-//Our faq schema
+//Our horarios schema
 const horarioSchema = new mongoose.Schema({
     Carreira: {
         type: Schema.Types.ObjectId,
@@ -21,7 +21,7 @@ const horarioSchema = new mongoose.Schema({
 const Horario = mongoose.model('Horarios', horarioSchema);
 
 exports.horarioFindById = (id, cb) => {
-        FAQ.findById(id, {  _id:1, Carreira:1,Frequencia:1})
+        Horario.findById(id, {  _id:1, Carreira:1,Frequencia:1})
         .populate({ path: 'Carreira', model: Carreira })
         .populate({ path: 'Frequencia', model: Frequencia })
         .exec()

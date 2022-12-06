@@ -20,8 +20,11 @@ app.set('view engine', 'ejs');
 app.use(express.static('assets'));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/carreira', express.static(path.join(__dirname, 'public')))
+app.use('/carreira/edit', express.static(path.join(__dirname, 'public')))
 app.use('/frequencia', express.static(path.join(__dirname, 'public')))
+app.use('/frequencia/edit', express.static(path.join(__dirname, 'public')))
 app.use('/horario', express.static(path.join(__dirname, 'public')))
+app.use('/horario/edit', express.static(path.join(__dirname, 'public')))
 app.use('/faq', express.static(path.join(__dirname, 'public')))
 app.use('/tickets', express.static(path.join(__dirname, 'public')))
 app.use('/faq/edit', express.static(path.join(__dirname, 'public')))

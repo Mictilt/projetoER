@@ -18,7 +18,9 @@
         <form action="/frequencia/edit/<%=frequencia._id%>" method="post" class="formcreate">
             <h1>Editar Frequência</h1>
             <label class="col-lg-12 columnStyle p-3">Hora </label><br>
-            <input name="hora" type="text" value="<%=frequencia.hora%>" placeholder="Insira a hora" class="col-lg-12 columnStyle perguntainput">           
+            <input name="hora" type="text" value="<%=frequencia.hora%>" placeholder="Insira a hora" class="col-lg-12 columnStyle perguntainput" min="0" max="23">
+            <label class="col-lg-12 columnStyle p-3">Minutos </label><br>
+            <input name="minutos" type="text" value="<%=frequencia.minutos%>" placeholder="Insira os minutos" class="col-lg-12 columnStyle perguntainput" min="0" max="59">                      
             <input name ="User" type="hidden" value="<%=user.id%>">            
             <div class="container">
                 <div class="row">
