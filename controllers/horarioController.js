@@ -97,7 +97,7 @@ exports.listCreateHorario = (req, res) => {
 };
 
 
-exports.listCarreiraPool = (req, res) => {
+exports.listHorarioPool = (req, res) => {
     HorarioModel.horarioList((docs, err) => {
         const isAuthenticated = !!req.user;
         const num = 0;

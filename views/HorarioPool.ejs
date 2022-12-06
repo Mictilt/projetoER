@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FACIL</title>
+    <%- include('./partials/Style')%>
+    <%- include('./partials/Style_FaqPool')%>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<body>
+<% if (isAuthenticated){ %>
+    <%- include('./partials/Base_Logged')%>
+<%} else{%>
+    <%-include('./partials/Base_Notlogged')%>
+<%} %>
+<main>
+    <div class ="division">
+        <div>
+            <h1 class="collorblack">Pool de Horários</h1>
+        </div>
+        <div class="accordion paddingl" id="accordionExample">
+            <div class="card widthcard">
+                <%horario.forEach(function (horario) {%>
+                <div class="card-header colapse" id="heading<%=num%>">
+                    <h2 class="m-0">
+                        <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
+                            <%=horario.Carreira.nome%>
+                        </button>
+                    </h2>
+                </div>
+                <!--
+                <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
+                    <div class="card-body faqcollapse">
+                        <%=horario.Carreira.nome%>
+                    </div>
+                </div>
+                -->
+                <div class="list-inline-item">
+                    <button>
+                        <a href="edit/<%=horario._id%>">Editar</a>
+                    </button>
+                </div>
+                <div class="list-inline-item">
+                    <form action="delete/<%=horario._id%>" method="post">
+                            <a href="delete/<%=horario._id%>"><button>Apagar</button></a>
+                    </form>
+                </div>
+                <%num = num + 1%>
+                <% }); %>
+            </div>
+
+    </div>
+</main>
+<%-include('./partials/Footer')%>
+</body>
+</html>
