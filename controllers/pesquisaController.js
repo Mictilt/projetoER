@@ -15,9 +15,13 @@ exports.listPesquisaHorarios = (req, res) => {
     HorarioModel.findHorarioCarreriaID(req.body.Carreira,(docs, err) => {
         const isAuthenticated = !!req.user;
         const num = 0;
-        if (docs[0] == null) res.status(200).redirect('/pesquisa/0');
-        if(!err) res.status(200).render('horariofrequencia',{isAuthenticated,horario:docs,num});
+        if (docs[0] == null){
+            res.status(200).redirect('/pesquisa/0')
+        }else{
+            if(!err) res.status(200).render('horariofrequencia',{isAuthenticated,horario:docs,num});
         else res.status(500).send({message: err.message});
+        }; 
+        
     });
 };
 

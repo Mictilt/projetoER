@@ -16,7 +16,7 @@ router.post('/frequencia', jsonParser, function (req, res) {
 });
 
 router.get('/:id', jsonParser, function (req, res) {
-    pesquisaController.erroPesquisa(req,res);
+    pesquisaController.listPesquisaFrequencia(req,res);
 });
 
 
