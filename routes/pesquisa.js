@@ -10,9 +10,13 @@ router.get('/', jsonParser, function (req, res) {
 });
 
 router.post('/frequencia', jsonParser, function (req, res) {
-    console.log("\nlista frequencias\n");
+    //console.log("\nlista frequencias\n");
     //pesquisa horarios com carreira
     pesquisaController.listPesquisaHorarios(req,res);
+});
+
+router.get('/:id', jsonParser, function (req, res) {
+    pesquisaController.erroPesquisa(req,res);
 });
 
 

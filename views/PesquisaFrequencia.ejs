@@ -14,11 +14,14 @@
     <%-include('./partials/Base_Notlogged')%>
 <%} %>
 <main>
+    
     <form action="/pesquisa/frequencia" method="post" class="formcreate">
-        <h3 class="paddingt paddingl">Pesquisa Frequências em Carreira</h3>
+        <h3 class="paddingt paddingl">Pesquisa Frequências em Carreiras no município de Cinfães</h3>
+           <%if (par){%><div class="accordion paddingl" id="accordionExample" style="color: red;">Não tem frequêcias nesta Carreira escolhida escolha outra opção.</div>  <%}%>
             <div class="accordion paddingl" id="accordionExample">
                 <div class="card widthcard">            
-                    <label class="col-lg-12 columnStyle p-3">Carreiras </label><br>
+                    <label class="col-lg-12 columnStyle p-3" style="color: black;">Carreiras </label><br>
+                    
                     <select class="form-control" id="Carreira" name="Carreira">
                     <%carreira.forEach(function (carreira) {%>                                  
                         <option value="<%=carreira._id%>"><%=carreira.nome%></option>
@@ -30,7 +33,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="criarconta divbutton">
-                                <button id="btn_criarconta" type="submit" value="Submit">Pesuisar Frequências</button>
+                                <button id="btn_criarconta" type="submit" value="Submit">Pesquisar Frequências</button>
                             </div>
                         </div>
                     </div>
