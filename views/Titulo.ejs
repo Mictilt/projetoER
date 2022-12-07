@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FACIL</title>
+    <%- include('./partials/Style')%>
+    <%- include('./partials/Style_Titulo')%>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<body>
+<% if (isAuthenticated){ %>
+    <%- include('./partials/Base_Logged')%>
+<%} else{%>
+    <%-include('./partials/Base_Notlogged')%>
+<%} %>
+<main>
+<h3 class="paddingt paddingl">Gestão de Títulos Passageiros do Município de Cinfães </h3>
+    <div class="accordion paddingl" id="accordionExample">
+        <div class="card widthcard">
+            <%titulo.forEach(function (titulo) {%>                                  
+                    <div class="card-header colapse" id="heading<%=num%>">
+                        <h2 class="m-0">
+                            <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
+                            <%=titulo.nome%>
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
+                        <div class="card-body faqcollapse">
+                            <%=titulo.nome%>
+                        </div>
+                    </div>
+                    <%num = num + 1%>
+                
+            <% }); %>
+        </div>
+    </div>
+    <% if (isAuthenticated){ %>
+    <div class="paddingt paddinglbutt paddingb">
+    <a href="/titulo/create"><button>Criar Título</button></a>
+    <a href="/titulo/pool"><button>Ver Todos Os Títulos</button></a>
+    </div>
+    <%} %>
+</main>
+<%-include('./partials/Footer')%>
+</body>
+</html>

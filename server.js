@@ -26,6 +26,8 @@ app.use('/frequencia/edit', express.static(path.join(__dirname, 'public')))
 app.use('/horario', express.static(path.join(__dirname, 'public')))
 app.use('/horario/edit', express.static(path.join(__dirname, 'public')))
 app.use('/pesquisa', express.static(path.join(__dirname, 'public')))
+app.use('/titulo', express.static(path.join(__dirname, 'public')))
+app.use('/titulo/edit', express.static(path.join(__dirname, 'public')))
 app.use('/faq', express.static(path.join(__dirname, 'public')))
 app.use('/tickets', express.static(path.join(__dirname, 'public')))
 app.use('/faq/edit', express.static(path.join(__dirname, 'public')))
@@ -58,6 +60,11 @@ const horario = require("./models/horario");
 // pesquisa frequencia
 const pesquisaRoutes = require('./routes/pesquisa');
 app.use('/pesquisa', pesquisaRoutes);
+
+// titulo
+const tituloRoutes = require('./routes/titulo');
+app.use('/titulo', tituloRoutes);
+const titulo = require("./models/titulo");
 
 
 //User routes and use them as middleware, i.e. every time a request url matches '/users' the appropriate route will be followed according to the HTTP verb (app.get/post/put/patch/delete)
@@ -101,6 +108,7 @@ app.get('/', function (req, res){
         console.log(`user is authenticated, session is ${req.session.id}`);
     } else {
         console.log("unknown user");
+        
     }
     res.render('home',{isAuthenticated});
 });
