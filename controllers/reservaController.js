@@ -1,27 +1,46 @@
 const reservaModel = require('../models/reserva');
+const UserModel = require('../models/user');
 
-exports.insert = (req, res) => {
-    ticketModel.createTicket(req.body, (doc, err) => {
-        if(!err) res.redirect("/tickets");
-        else res.redirect("/criarTicket");
+exports.insertReserva = (req, res) => {
+    reservaModel.createReserva(req.body, (doc, err) => {
+        if(!err) res.redirect("/reserva");
+        else res.redirect("/reserva/criar");
     });
 };
 
-exports.listTicket = (req,res) => {
+/*exports.listTicket = (req,res) => {
     ticketModel.ticketList((docs,err) => {
         const isAuthenticated = !!req.user;
         const num = 0;
         if (!err) res.status(200).render('tickets',{isAuthenticated, tickets:docs,num});
         else res.status(500).send({message: err.message});
     });
-};
+};*/
 
 exports.reservaGetById = (req, res) => {
-    reservaModel.reservaFindById(req.params.id, (doc, err) => {
-        const isAuthenticated = !!req.user;
-        const user = req.user;
-        if(!err) res.status(200).render('Reserva',{isAuthenticated,reservas:doc,user});
-        else res.status(500).send({message: err.message});
+    const user = req.user;
+    UserModel.userFindById(req.user.id,(udocs,err) => {
+        if (err) res.status(500).send({message: err.message});
+        reservaModel.reservaFindById(udocs._id, (doc, err) => {
+            const isAuthenticated = !!req.user;
+            if(!err) res.status(200).render('Reserva',{isAuthenticated,reservas:doc,user, udocs});
+            else res.status(500).send({message: err.message});
+        });
+    });
+};
+
+exports.reservaGetByIdCriar = (req, res) => {
+    const user = req.user;
+    UserModel.userFindById(req.user.id,(udoc,err) => {
+        if (err) res.status(500).send({message: err.message});
+        UserModel.userList((udocs,err) => {
+            if (err) res.status(500).send({message: err.message});
+            reservaModel.reservaFindById(udoc._id, (doc, err) => {
+                const isAuthenticated = !!req.user;
+                if(!err) res.status(200).render('ReservaCriar',{isAuthenticated,reservas:doc,user, udocs});
+                else res.status(500).send({message: err.message});
+            });
+        });
     });
 };
 

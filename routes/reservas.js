@@ -10,9 +10,18 @@ router.get('/', jsonParser, function (req, res) {
     reservaController.reservaGetById(req,res);
 });
 
+router.get('/criar', jsonParser, function (req, res) {
+    reservaController.reservaGetByIdCriar(req,res);
+});
+
+router.post('/criar', jsonParser, function (req, res) {
+    reservaController.insertReserva(req,res);
+});
+
 router.post('/:id',jsonParser, function (req,res){
     reservaController.userPatchById(req, res);
 });
+
 
 
 //Let's expose these routes
