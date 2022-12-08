@@ -36,8 +36,8 @@ exports.getById = (req, res) => {
 };
 
 exports.patchById = (req, res) => {
-    TituloModel.patchTitulo(req.params.id, req.body, (doc, err) => {
-        if(!err) res.status(200).redirect("/titulo/pool");
+    TituloModel.patchTitulo(req.params.id, req.body, (doc, err) => {        
+        if(!err) res.status(204).redirect("/titulo/pool");
         else res.status(500).send({message: err.message});
     });
 };

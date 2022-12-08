@@ -19,18 +19,24 @@
         <div class="card widthcard">
             <%titulo.forEach(function (titulo) {%>                                  
                     <div class="card-header colapse" id="heading<%=num%>">
+                       <div>
                         <h2 class="m-0">
                             <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
-                            <%=titulo.nome%>
+                                <%=titulo.tipo%>:&nbsp&nbsp<%=titulo.nome%><%if(titulo.tipo == 'Recarregamento'){%>
+                                <br>Quantidade viagens:&nbsp&nbsp<%=titulo.quantidade%>
+                            <%}%>
                             </button>
                         </h2>
+                       </div>
+                      <div>
+                        <%if(titulo.estado == false){%>
+                            <a href="/titulo/pagamento/<%=titulo._id%>"><button>Pagamento Título</button></a>
+                        <%}%>
+                        
+                      </div> 
                     </div>
-
-                    <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
-                        <div class="card-body faqcollapse">
-                            <%=titulo.nome%>
-                        </div>
-                    </div>
+                    
+                    
                     <%num = num + 1%>
                 
             <% }); %>

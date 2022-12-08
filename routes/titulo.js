@@ -31,7 +31,7 @@ router.get('/create', function (req, res) {
     res.render('titulocreate', {isAuthenticated,user,res});
 });
 router.get('/edit/:id', jsonParser, function (req, res) {
-    tituloController.getById(req, res)
+    tituloController.getById(req, res);
 });
 
 router.post('/edit/:id', jsonParser, function (req, res) {
@@ -39,7 +39,18 @@ router.post('/edit/:id', jsonParser, function (req, res) {
 });
 
 router.post('/delete/:id', jsonParser, function (req, res) {
-    tituloController.removeById(req, res)
+    tituloController.removeById(req, res);
+});
+
+router.get('/pagamento/:id', jsonParser, function (req, res) {
+    const isAuthenticated = !!req.user;
+    const user = req.user;
+    const par = req.params.id;
+    res.render('pagamento', {isAuthenticated,user,par,res});
+});
+router.post('/pagamento/:id', jsonParser, function (req, res) {
+    console.log("*****************************");
+    tituloController.patchById(req, res);    
 });
 
 //Let's expose these routes
