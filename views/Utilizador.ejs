@@ -53,13 +53,40 @@
     <div>
         <div>
             <div style="width: 80%;"  class="uti_detalhes">
-                <%=usdocs[0].nome%>
-                <br><br><br><br><br><br><br><br><br>
+                <form  action = "/user/tipo/edit/<%=udocs._id%>" method="post">
+                    <div style="display: flex;">
+                        <div><h2>Nome de utilizador</h2></div>
+                        <div style="color: black; position: absolute; margin-left: 27%; "><h2>Tipo</h2></div>              
+                    </div>
+                          
+                    <%usdocs.forEach(function (user) {%> 
+                        <div style="margin-bottom: 10px;">
+                            <div style="color: black; display: flex;">
+                                <div style="color: black; ">
+                                    <%=user.username%>
+                                </div>
+                                
+                                <div style="color: black; position: absolute; margin-left: 27%; ">
+                                    <select class="form-control" id="tipo" name="tipo" type="text"> 
+                                       <option value="0" <%if(user.tipo == 0){%>selected ="selected" <%}%>>Inativo</option> 
+                                       <option value="1" <%if(user.tipo == 1){%>selected ="selected" <%}%>>Habitante local</option>
+                                       <option value="2" <%if(user.tipo == 2){%>selected ="selected"<%}%>>Visitante</option>
+                                       <option value="3" <%if(user.tipo == 3){%>selected ="selected"<%}%>>Motorista</option>
+                                       <option value="4" <%if(user.tipo == 4){%>selected ="selected" <%}%>>Admin</option>  
+                                    </select>
+                                        
+                                </div><img style="margin-left:1%;" src="image/edit.png" alt="edit" width="30" height="30">
+                            </div>
+                        </div>                        
+                    <%});%>
+                <br><br><br><br><br><br><br>
+                    
+                </form>
             </div>
         </div>
     </div>
     
-
+    
    
 </main>
 <%-include('./partials/Footer')%>
