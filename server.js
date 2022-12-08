@@ -33,6 +33,7 @@ app.use('/tickets/ticketsEspecifico', express.static(path.join(__dirname, 'publi
 app.use('/reserva/comentario', express.static(path.join(__dirname, 'public')))
 app.use('/reserva/editar', express.static(path.join(__dirname, 'public')))
 app.use('/reserva/classificacao', express.static(path.join(__dirname, 'public')))
+app.use('/reserva/notificar', express.static(path.join(__dirname, 'public')))
 app.use('/reserva', express.static(path.join(__dirname, 'public')))
 app.use('/rota', express.static(path.join(__dirname, 'public')))
 var jsonParser = bodyParser.json();

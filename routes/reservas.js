@@ -34,6 +34,10 @@ router.post('/classificacao/:id',jsonParser, function (req,res){
     reservaController.patchReservaClassificacao(req, res);
 });
 
+router.get('/notificar/:id',jsonParser, function (req,res){
+    reservaController.reservaGetByIdEditar(req, res);
+});
+
 router.get('/editar/:id',jsonParser, function (req,res){
     reservaController.reservaGetByIdEditar(req, res);
 });

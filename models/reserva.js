@@ -37,7 +37,7 @@ exports.reservaFindById = (id, cb) => {
 exports.createReserva = (reservaData, cb) => {
 
     const reserva = new Reserva(reservaData);
-
+    
     //Equivalently as the previous lines, mongoose allows the .then .catch mechanism instead of the callbacks (very similar to JS promises)
     reserva.save()
         .then(doc => cb(doc))
