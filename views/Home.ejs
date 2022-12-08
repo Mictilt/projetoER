@@ -17,6 +17,9 @@
     <main>
        
         <ul class="main_but">
+            <% if (isAuthenticated){ %>
+                <li><a href="/reserva"><button>Reservas</button></a></li>
+            <%} %>
             <li><a href="/faq"><button>Frequências</button></a></li>
             <li><a href="/tickets"><button>Carreiras</button></a></li>
             <li><a href="/atendimento"><button>MAPA - Rotas</button></a></li>
