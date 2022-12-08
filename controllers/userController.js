@@ -55,3 +55,16 @@ exports.userPatchById = (req, res) => {
         else res.status(500).send({message: err.message});
     });
 };
+
+
+exports.userPatchByIdPass = (req, res) => {
+    console.log("*******************");
+    console.log(req.params.id);
+    console.log("*******************");
+    console.log(req.body.password[0]);
+    console.log("*******************");
+    UserModel.patchUser(req.params.id,req.body, (doc, err) => {
+        if(!err) res.status(200).redirect("/user");
+        else res.status(500).send({message: err.message});
+    });
+};

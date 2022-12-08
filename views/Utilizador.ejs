@@ -27,37 +27,45 @@ tickets.forEach(function(tickets) {
 });
 %>
 <main class="utilizador flex-fill">
-    <div class="uti_detalhes">
-        <h2>Meus Detalhes:</h2>
-        <h4>Tickets Resolvidos</h4><span><%=numTicket%></span>
-        <h4>Nome</h4>
-        <%=udocs.username%>
-        <h4>Email</h4>
-        <%=udocs.email%>
+    <div  class="uti_detalhes">
+       <div style=" color: black;">
+            <div >
+                <h2>Meus Detalhes:</h2>
+            </div>
+            <div style="display: inline-flex; color: black;">
+                <h4 >Nome:</h4><span><%=udocs.username%></span><br>
+            </div>
+            <div style=" color: black;">
+                <div style="display: inline-flex; color: black;">
+                    <h4>Tipo:</h4><span>
+                        <%if(udocs.tipo == 0){%>Inativo<%}%>
+                        <%if(udocs.tipo == 1){%>Habitante local<%}%>
+                        <%if(udocs.tipo == 2){%>Visitante<%}%>
+                        <%if(udocs.tipo == 3){%>Motorista<%}%>
+                        <%if(udocs.tipo == 4){%>Admin<%}%>                
+                    </span><br>
+                </div>
+                    
+            </div>
+            <div style="display: inline-flex; color: black;">
+                <h4>Email:</h4><span><%=udocs.email%></span><br>    
+            </div>
+        </div>
+       
+        
+        
+        
     </div>
     <div class="introdRes">
-        <h2>Adicionar resposta:</h2>
-        <form  action = "/user/<%=udocs._id%>" method="post">
-        <select name="responses">
-            <option value = ""></option>
-            <% fdocs.forEach(function(faq) { %>
-            <option value = "<%=faq.answer%>"><%=faq.answer%></option>
-            <% });%>
-            <% tickets.forEach(function(ticket) { %>
-            <%if(ticket.answers != ""){%>
-            <option value = "<%=ticket.answers%>"><%=ticket.answers%></option>
-            <%}%>
-            <% });%>
-        </select>
+        <h2>Alterar palavra passe:</h2>
+        <form  action = "/user/edit/<%=udocs._id%>" method="post">
+            <input type="text" id="password" name="password" placeholder="nova palavra passe"> 
             <input type="hidden" name="username" value="<%=udocs.username%>">
-            <input type="hidden" name="email" value="<%=udocs.email%>">
-            <input type="hidden" name="password" value="<%=udocs.password%>">
-        <button>Inserir Resposta</button>
+            <input type="hidden" name="email" value="<%=udocs.email%>">            
+        <button>Alterar</button>
             </form>
     </div>
-    <div id="img">
-        <img src="image/farma.png">
-    </div>
+   
 </main>
 <%-include('./partials/Footer')%>
 </body>

@@ -13,6 +13,9 @@ router.get('/', jsonParser, function (req, res) {
 router.post('/:id',jsonParser, function (req,res){
     userController.userPatchById(req, res);
 });
+router.post('/edit/:id',jsonParser, function (req,res){
+    userController.userPatchByIdPass(req, res);
+});
 
 
 //Let's expose these routes
