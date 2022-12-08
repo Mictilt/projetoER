@@ -1,8 +1,6 @@
 const mongoose = require('./mongooseConfigs').mongoose;
 const Schema = mongoose.Schema;
 const fetch = require('node-fetch');
-const FAQ = require("../models/faq");
-const Ticket = require("../models/ticket");
 //Our user schema
 const userSchema = new mongoose.Schema({
     username: String,

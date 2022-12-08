@@ -1,6 +1,4 @@
 const UserModel = require('../models/user');
-const ticketModel = require ('../models/ticket');
-const faqModel = require ('../models/faq');
 const numAgente = require('../server');
 const {userModel} = require("../models/user");
 
@@ -20,15 +18,10 @@ exports.list = (req, res) => {
 exports.userGetById = (req, res) => {
         const user = req.user;
     UserModel.userFindById(req.user.id,(udocs,err) => {
-        if (err) res.status(500).send({message: err.message});
-        faqModel.faqList((fdocs,err) =>{
-            if (err) res.status(500).send({message: err.message});
-            ticketModel.ticketList((docs,err) => {
-                if(!err) res.status(201).render('utilizador', {udocs,fdocs,tickets : docs, user : user});
+
+                if(!err) res.status(201).render('utilizador', {udocs, user : user});
                 else res.status(500).send({message: err.message});
             });
-        });
-    });
 };
 
 exports.userListAtend = (req, res) => {
