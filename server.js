@@ -19,6 +19,16 @@ const port = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.use(express.static('assets'));
 app.use(express.static(path.join(__dirname, 'public')))
+app.use('/carreira', express.static(path.join(__dirname, 'public')))
+app.use('/carreira/edit', express.static(path.join(__dirname, 'public')))
+app.use('/frequencia', express.static(path.join(__dirname, 'public')))
+app.use('/frequencia/edit', express.static(path.join(__dirname, 'public')))
+app.use('/horario', express.static(path.join(__dirname, 'public')))
+app.use('/horario/edit', express.static(path.join(__dirname, 'public')))
+app.use('/pesquisa', express.static(path.join(__dirname, 'public')))
+app.use('/titulo', express.static(path.join(__dirname, 'public')))
+app.use('/titulo/edit', express.static(path.join(__dirname, 'public')))
+app.use('/titulo/pagamento', express.static(path.join(__dirname, 'public')))
 app.use('/faq', express.static(path.join(__dirname, 'public')))
 app.use('/tickets', express.static(path.join(__dirname, 'public')))
 app.use('/faq/edit', express.static(path.join(__dirname, 'public')))
@@ -37,6 +47,31 @@ app.use('/faq', faqRoutes);
 const ticketRoutes = require('./routes/tickets');
 app.use('/tickets', ticketRoutes)
 const Faq = require("./models/faq");
+// carreira
+const carreiraRoutes = require('./routes/carreira');
+app.use('/carreira', carreiraRoutes);
+const carreira = require("./models/carreira");
+
+// frequencia
+const frequenciaRoutes = require('./routes/frequencia');
+app.use('/frequencia', frequenciaRoutes);
+const frequencia = require("./models/frequencia");
+
+// horario
+const horarioRoutes = require('./routes/horario');
+app.use('/horario', horarioRoutes);
+const horario = require("./models/horario");
+
+// pesquisa frequencia
+const pesquisaRoutes = require('./routes/pesquisa');
+app.use('/pesquisa', pesquisaRoutes);
+
+// titulo
+const tituloRoutes = require('./routes/titulo');
+app.use('/titulo', tituloRoutes);
+const titulo = require("./models/titulo");
+
+
 //User routes and use them as middleware, i.e. every time a request url matches '/users' the appropriate route will be followed according to the HTTP verb (app.get/post/put/patch/delete)
 const userRoutes = require('./routes/users');
 app.use('/user', userRoutes);
@@ -81,6 +116,7 @@ app.get('/', function (req, res){
         console.log(`user is authenticated, session is ${req.session.id}`);
     } else {
         console.log("unknown user");
+        
     }
     res.render('home',{isAuthenticated});
 });

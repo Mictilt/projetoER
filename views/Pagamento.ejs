@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FACIL</title>
+    <%- include('./partials/Style')%>
+    <%- include('./partials/Style_FaqCreate')%>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+ function paypal (){
+    console.log("paypal");
+    $('#mb').remove();
+    $('#mbway').remove();
+    $('#paypalDados').removeAttr('hidden');
+    $('#pagar').removeAttr('hidden');
+     
+ }
+ function mb (){
+    console.log("mb");
+    $('#paypal').remove();
+    $('#mbway').remove();
+    $('#mbDados').removeAttr('hidden');
+    $('#pagar').removeAttr('hidden');
+
+
+}
+function mbway (){
+    console.log("mbway");
+    $('#paypal').remove();
+    $('#mb').remove();
+    $('#mbwayDados').removeAttr('hidden');
+    $('#pagar').removeAttr('hidden');
+
+}
+</script>
+<body>
+<% if (isAuthenticated){ %>
+    <%- include('./partials/Base_Logged')%>
+<%} else{%>
+    <%-include('./partials/Base_Notlogged')%>
+<%} %>
+<main>
+    <div class="collorblack">
+        <form action="/titulo/pagamento/<%=par%>" method="post" class="formcreate">
+            <h1>Efetuar Pagamento Título</h1>
+            <BR>
+            <h2 style="color: black;" >Tipos de Pagamento</h2>            
+            <span id="paypal"><img  onclick="paypal()" src="image/paypal.png" alt="paypal" width="80" height="40"></span>
+            <span id="mb"><img  onclick="mb()" src="image/mb.png" alt="paypal" width="80" height="80"></span>
+            <span id="mbway"><img  onclick="mbway()" src="image/mbway.png" alt="paypal" width="80" height="50"></span>
+            <br>
+            <span id="paypalDados" hidden>
+                <label class="col-lg-12 columnStyle p-3">E-mail </label><br>
+                <input id="email" name="email" type="text" placeholder="Insira E-mail" class="col-lg-12 columnStyle perguntainput">
+                <label class="col-lg-12 columnStyle p-3">Palavra Passe </label><br>
+                <input id="pass" name="pass" type="text" placeholder="Insira Palavra Passe" class="col-lg-12 columnStyle perguntainput">
+            </span>
+            <br><br>
+            <span id="mbDados" hidden >
+               <div style="display: inline-flex; color: black;">
+                
+                    <div style=" padding-top: 8%;">                        
+                        <img  onclick="mb()" src="image/mb.png" alt="paypal" width="80" height="80">
+                    </div>
+                    <div>
+                        &nbsp&nbsp&nbsp&nbsp
+                    </div>
+                    <div style="color: black; padding-top: 1%;">
+                        Pagamento por Multibanco<br>
+                        Entidade:             15486<br>
+                        Referência:     101 152 456<br>
+                        Montante:               10€
+                                            
+
+                    </div>
+               </div>
+            </span>
+            <span id="mbwayDados" hidden>
+                <label class="col-lg-12 columnStyle p-3">Número de Telemóvel </label><br>
+                <input id="telemovel" name="telemovel" type="number" placeholder="Insira Número de Telemóvel" class="col-lg-12 columnStyle perguntainput">
+            </span>
+
+            <input name ="User" type="hidden" value="<%=user.id%>">                    
+            <input name ="estado" type="hidden" value="true">
+            <span id="pagar" hidden >
+                <div class="container">
+                    <div class="row">
+                        <div class="criarconta divbutton">
+                            <button id="btn_criarconta" type="submit" value="Submit">Pagar</button>
+                        </div>
+                    </div>
+                </div>
+            </span>
+        </form>
+    </div>
+</main>
+<%-include('./partials/Footer')%>
+</body>
+</html>

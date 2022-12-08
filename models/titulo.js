@@ -1,74 +1,75 @@
 const mongoose = require('./mongooseConfigs').mongoose;
 const Schema = mongoose.Schema;
-const { Timestamp } = require('mongodb');
 const fetch = require('node-fetch');
 //Our user schema
-const frequenciaSchema = new mongoose.Schema({
-    hora:[Number],
-    minutos:[Number]
+const tituloSchema = new mongoose.Schema({
+    nome:String,
+    tipo:String,
+    quantidade:Number,
+    estado:Boolean
 });
 
 //Create the actual model
-const Frequencia = mongoose.model('Frequencias', frequenciaSchema);
+const Titulo = mongoose.model('Titulos', tituloSchema);
 
-exports.frequenciaFindById = (id, cb) => {
-    Frequencia.findById(id, {  _id:1, hora:1, minutos:1})
+exports.tituloFindById = (id, cb) => {
+    Titulo.findById(id, {  _id:1, nome:1,tipo:1,quantidade:1,estado:1})
         .exec()
         .then(doc => cb(doc))
         .catch(err => cb(null, err));
 };
 
-exports.createFrequencia = (frequenciaData, cb) => {
+exports.createTitulo = (tituloData, cb) => {
 
-    const frequencia = new Frequencia(frequenciaData);
+    const titulo = new Titulo(tituloData);
 
     //Equivalently as the previous lines, mongoose allows the .then .catch mechanism instead of the callbacks (very similar to JS promises)
-    frequencia.save()
+    titulo.save()
         .then(doc => cb(doc))
         .catch(err => cb(null, err)); //In this case the callback signature should be changed to include the err parameter
 };
 
-exports.frequenciaList = (cb) => {
+exports.tituloList = (cb) => {
 
-    Frequencia.find({ }, { _id:1, hora:1, minutos:1})
+    Titulo.find({ }, { _id:1, nome:1,tipo:1,quantidade:1,estado:1})
         .exec()
         .then((docs) => cb(docs))
         .catch(err => cb(err));
 };
 
-exports.frequenciaFindOne = (id, cb) => {
+exports.tituloFindOne = (id, cb) => {
 
     //status code 204 should be returned if we don't want to send back the updated model
-    Frequencia.findOne({_id: id})
+    Titulo.findOne({_id: id})
         .exec()
         .then(() => cb())
         .catch(err => cb(err));
 };
 
-exports.patchFrequencia = (id, frequenciaData, cb) => {
+exports.patchTitulo = (id, tituloData, cb) => {
 
     //status code 204 should be returned if we don't want to send back the updated model
-    Frequencia.findOneAndUpdate({_id: id}, frequenciaData, {new:true, overwrite:true, projection: { _id:0, hora:1}})
+    Titulo.findOneAndUpdate({_id: id}, tituloData, {new:false, overwrite:false, projection: { _id:0, nome:0,tipo:0,quantidade:0,estado:1}})
         .exec()
         .then(() => cb())
         .catch(err => cb(err));
 };
+        
+exports.tituloRemoveById = (tituloId, cb) => {
 
-exports.frequenciaRemoveById = (frequenciaId, cb) => {
-
-    Frequencia.deleteMany({ _id: frequenciaId })
+    Titulo.deleteMany({ _id: tituloId })
         .exec()
         .then(() => cb())
         .catch(err => cb(err));
 
 };
 
-exports.frequenciaName = function () {
+exports.tituloName = function () {
     return this.modelName;
 }
 
 
 
-exports.frequenciaModel = function () {
-    return mongoose.model('Frequencias', frequenciaSchema);
+exports.tituloModel = function () {
+    return mongoose.model('Titulos', tituloSchema);
 }

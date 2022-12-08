@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FACIL</title>
+    <%- include('./partials/Style')%>
+    <%- include('./partials/Style_Frequencia')%>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<body>
+<% if (isAuthenticated){ %>
+    <%- include('./partials/Base_Logged')%>
+<%} else{%>
+    <%-include('./partials/Base_Notlogged')%>
+<%} %>
+<main>
+<h3 class="paddingt paddingl">Lista de Frequências  <%=horario[0].Carreira.nome%></h3>
+    <div class="accordion paddingl" id="accordionExample">
+        <div class="card widthcard">
+            <%horario[0].Frequencia.forEach(function (frequencia) {%>
+                
+                    
+                    <div class="card-body faqcollapse">
+                        <%if (frequencia.hora < 10){%>0<%}%><%=frequencia.hora%>:<%if (frequencia.minutos < 10){%>0<%}%><%=frequencia.minutos%>
+                        
+                        </div>
+                
+                <% }); %>
+                
+            
+       
+        </div>
+    </div>
+    <% if (isAuthenticated){ %>
+    <div class="paddingt paddinglbutt paddingb">
+    </div>
+    <%} %>
+</main>
+<%-include('./partials/Footer')%>
+</body>
+</html>
