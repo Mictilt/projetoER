@@ -23,6 +23,9 @@ app.use('/faq', express.static(path.join(__dirname, 'public')))
 app.use('/tickets', express.static(path.join(__dirname, 'public')))
 app.use('/faq/edit', express.static(path.join(__dirname, 'public')))
 app.use('/tickets/ticketsEspecifico', express.static(path.join(__dirname, 'public')))
+app.use('/reserva/comentario', express.static(path.join(__dirname, 'public')))
+app.use('/reserva/editar', express.static(path.join(__dirname, 'public')))
+app.use('/reserva/classificacao', express.static(path.join(__dirname, 'public')))
 app.use('/reserva', express.static(path.join(__dirname, 'public')))
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({extended:false});

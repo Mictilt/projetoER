@@ -9,13 +9,56 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <body>
 <%- include('./partials/Base_Logged')%>
-<main class="utilizador flex-fill">
-    <h3 class="paddingt paddingl">Reservas</h3>
-    <%reservas.forEach(function (reservas) {%>
-        <%=reservas%>
-        <% }); %>
+<main class="utilizador flex-fill" style="display: block;">
+    <h3 class = "title">Suas Reservas:<h3>
+        
+        <div class="contentTicket">
+        <div class = "ticketInfo">
+        <div class="accordion paddingl" id="accordionExample">
+        <div class="card widthcard">
+        <% reservas.forEach(function(reservas) {%>
+            <%if (reservas.User.id == user.id) {%>
+                <div class="card-header colapse" id="heading<%=num%>">
+                    <h2 class="m-0">
+                        <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
+                            <label class = "titleTicket">Reserva de <%=reservas.datetime.toLocaleString()%> <span>&#8681;</span></label>
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
+                    <div class="card-body faqcollapse">
+                        <label class = "titleTicket">Motorista: <%=reservas.Motorista.username %></label> <br>
+                        <label class = "description">Data e Hora de Marcação : <%=reservas.datetime.toLocaleString() %></label><br>
+                        <label class = "state" >Acompanhante : <%= ((reservas.acompanhante == true) ? "Sim" : "Não") %></label><br>
+                        <label class = "state" >Mobilidade Reduzida : <%= ((reservas.mobilidadeReduzida == true) ? "Sim" : "Não") %></label><br>
+                        <hr style="border-top: 10px solid rgb(72 69 69);;">
+                        <% if(reservas.comentario != null) {%>
+                        <label class = "titleTicket">Comentario feito: <%=reservas.comentario %></label> <br>
+                        <% } %>
+                        <% if(reservas.classificacao != null) {%>
+                        <label class = "titleTicket">Classificação dada: <%=reservas.classificacao %>/5</label> <br>
+                        <% } %>
+                        <% if(reservas.comentario == null) {%>
+                        <a href = "comentario/<%=reservas._id%>"><button class = "buttonTicket">Dar Comentário</button></a>
+                        <% } %>
+                        <% if(reservas.classificacao == null) {%>
+                        <a href = "classificacao/<%=reservas._id%>"><button class = "buttonTicket">Dar Classificação</button></a>
+                        <% } %>
+                        <a href = "editar/<%=reservas._id%>"><button class = "buttonTicket">Editar Reserva</button></a>
+                        <form action="delete/<%=reservas._id%>" method="post" style="padding-top: 10px;">
+                        <a href = "delete/<%=reservas._id%>"><button class = "buttonTicket">Apagar Reserva</button></a>
+                        </form>
+                    </div>      
+                </div>
+            
+            <%num = num + 1%>
+            <% } %> 
+        <% });%>
+    </div>
+    </div>
+    </div>
         <div class="paddingt paddinglbutt paddingb">
-            <a href="/reserva/criar"><button>Criar Reserva</button></a>
+            <a href="/reserva/criar"><button>Criar Nova Reserva</button></a>
         </div>
 </main>
 <%-include('./partials/Footer')%>

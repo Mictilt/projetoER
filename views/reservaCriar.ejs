@@ -14,14 +14,10 @@
         <div class="collorblack">
             <form action="/reserva/criar" method="post" class="formcreate">
                 <h1>Criar Reserva</h1>
-                <label class="col-lg-12 columnStyle p-3">Data </label><br>
-                <input name="data" type="text" placeholder="Insira a pergunta" class="col-lg-12 columnStyle perguntainput">
+                <label class="col-lg-12 columnStyle p-3">Escolha a Data e Hora da Reserva </label><br>
+                <input name="datetime" type="datetime-local" placeholder="Insira aqui a data" class="col-lg-12 columnStyle perguntainput">
                 <br>
-                <label class="col-lg-12 columnStyle p-3">Hora </label><br>
-                <input name="hora" type="text" placeholder="Insira a resposta" class="col-lg-12 columnStyle respostainput">
-                <br>
-                <br>
-                <label for="topic">Motorista</label>
+                <label for="topic">Escolha o seu Motorista</label>
                 <select class="form-control" id="topic" name="Motorista">
                     <%udocs.forEach(function(udocs) {%>
                         <% if (udocs.tipo == 0){%>
@@ -29,7 +25,7 @@
                         <% } %> 
                         <% });%>
                 </select>
-                <input name ="User" type="hidden" value="  %>">
+                <input name ="User" type="hidden" value="<%=user.id%>">
                 <label for="mobilidadeReduzida">Mobilidade Reduzida?</label>
                 <select name ="mobilidadeReduzida">
                     <option value="true">Sim</option>
