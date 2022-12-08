@@ -44,7 +44,7 @@ exports.percursoList = (cb) => {
 exports.patchPercurso = (id, percursoData, cb) => {
 
     //status code 204 should be returned if we don't want to send back the updated model
-    Percurso.findOneAndUpdate({_id: id}, percursoData, {new:true, overwrite:true, projection: { _id:0, Percurso:1}})
+    Percurso.findOneAndUpdate({_id: id}, percursoData, {new:false, overwrite:false, projection: { _id:0, Percurso:1}})
         .exec()
         .then(() => cb())
         .catch(err => cb(err));

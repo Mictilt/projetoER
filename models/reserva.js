@@ -1,5 +1,6 @@
 const mongoose = require('./mongooseConfigs').mongoose;
 const Schema = mongoose.Schema;
+const { Timestamp } = require('mongodb');
 const fetch = require('node-fetch');
 const User = require("../models/user");
 //Our user schema
@@ -14,18 +15,9 @@ const reservaSchema = new mongoose.Schema({
             type: Schema.Types.ObjectId,
             ref: 'User'
         },
-    Comentario:
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Comentario'
-        },
-    Classificacao:
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Classificacao'
-        },
-    data: String,
-    hora: String,
+    comentario: String,
+    classificacao: Number,
+    datetime: Date,
     acompanhante: Boolean,
     mobilidadeReduzida: Boolean,
 });
@@ -34,10 +26,9 @@ const reservaSchema = new mongoose.Schema({
 const Reserva = mongoose.model('Reservas', reservaSchema);
 
 exports.reservaFindById = (id, cb) => {
-    Reserva.findById(id, {  _id:1, User:1, Motorista:1, Comentario:1, Classificacao:1, data:1, hora:1, acompanhante:1, mobilidadeReduzida:1})
+    Reserva.findById(id, {  _id:1, User:1, Motorista:1, comentario:1, classificacao:1, datetime:1, acompanhante:1, mobilidadeReduzida:1})
         .populate({ path: 'User', model: User.userModel() })
-        .populate({ path: 'Comentario', model: Comentario })
-        .populate({ path: 'Classificacao', model: Classificacao })
+        .populate({ path: 'Motorista', model: User.userModel() })
         .exec()
         .then(doc => cb(doc))
         .catch(err => cb(null, err));
@@ -55,26 +46,46 @@ exports.createReserva = (reservaData, cb) => {
 
 exports.reservaList = (cb) => {
 
-    Reserva.find({ }, { _id:1, User:1, Motorista:1, Comentario:1, Classificacao:1, data:1, hora:1, acompanhante:1, mobilidadeReduzida:1})
+    Reserva.find({ }, { _id:1, User:1, Motorista:1, comentario:1, classificacao:1, datetime:1, acompanhante:1, mobilidadeReduzida:1})
         .populate({ path: 'User', model: User.userModel() })
-        .populate({ path: 'Comentario', model: Comentario.comentarioModel() })
-        .populate({ path: 'Classificacao', model: Classificacao.classificacaoModel() })
+        .populate({ path: 'Motorista', model: User.userModel() })
         .exec()
         .then((docs) => cb(docs))
         .catch(err => cb(err));
 };
 
-/*exports.patchReserva = (id, reservaData, cb) => {
+exports.patchComentarioReserva = (id, reservaData, cb) => {
 
     //status code 204 should be returned if we don't want to send back the updated model
-    Reserva.findOneAndUpdate({_id: id}, reservaData, {new:true, overwrite:true, projection: {  _id:0, username:0, password:0, email:0, FAQ:0, responses:1}})
+    Reserva.findOneAndUpdate({_id: id}, reservaData, {new:false, overwrite:false, projection: { _id:0, User:0, Motorista:0, comentario:1, classificacao:0, datetime:0, acompanhante:0, mobilidadeReduzida:0}})
         .populate({ path: 'User', model: User.userModel() })
-        .populate({ path: 'Comentario', model: Comentario.comentarioModel() })
-        .populate({ path: 'Classificacao', model: Classificacao.classificacaoModel() })
+        .populate({ path: 'Motorista', model: User.userModel() })
         .exec()
         .then(() => cb())
         .catch(err => cb(err));
-};*/
+};
+
+exports.patchClassificacaoReserva = (id, reservaData, cb) => {
+
+    //status code 204 should be returned if we don't want to send back the updated model
+    Reserva.findOneAndUpdate({_id: id}, reservaData, {new:false, overwrite:false, projection: { _id:0, User:0, Motorista:0, comentario:0, classificacao:1, datetime:0, acompanhante:0, mobilidadeReduzida:0}})
+        .populate({ path: 'User', model: User.userModel() })
+        .populate({ path: 'Motorista', model: User.userModel() })
+        .exec()
+        .then(() => cb())
+        .catch(err => cb(err));
+};
+
+exports.patchDataReserva = (id, reservaData, cb) => {
+
+    //status code 204 should be returned if we don't want to send back the updated model
+    Reserva.findOneAndUpdate({_id: id}, reservaData, {new:false, overwrite:false, projection: { _id:0, User:0, Motorista:0, comentario:0, classificacao:0, datetime:1, acompanhante:0, mobilidadeReduzida:0}})
+        .populate({ path: 'User', model: User.userModel() })
+        .populate({ path: 'Motorista', model: User.userModel() })
+        .exec()
+        .then(() => cb())
+        .catch(err => cb(err));
+};
 
 exports.reservaRemoveById = (reservaId, cb) => {
 

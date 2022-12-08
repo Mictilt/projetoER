@@ -38,7 +38,7 @@ exports.paragemList = (cb) => {
 exports.patchParagem = (id, paragemData, cb) => {
 
     //status code 204 should be returned if we don't want to send back the updated model
-    Paragem.findOneAndUpdate({_id: id}, paragemData, {new:true, overwrite:true, projection: { _id:0, localizacao:1, imagem:1}})
+    Paragem.findOneAndUpdate({_id: id}, paragemData, {new:false, overwrite:false, projection: { _id:0, localizacao:1, imagem:1}})
         .exec()
         .then(() => cb())
         .catch(err => cb(err));

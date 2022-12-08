@@ -12,7 +12,7 @@ const horarioSchema = new mongoose.Schema({
     Frequencia: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Frequencia'
+            ref: 'Frequencia' 
         }
     ],
 });
