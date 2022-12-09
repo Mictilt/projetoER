@@ -53,20 +53,22 @@
     <div>
         <div>
             <div style="width: 80%;"  class="uti_detalhes">
-                <form  action = "/user/tipo/edit/<%=udocs._id%>" method="post">
+                
                     <div style="display: flex;">
                         <div><h2>Nome de utilizador</h2></div>
                         <div style="color: black; position: absolute; margin-left: 27%; "><h2>Tipo</h2></div>              
                     </div>
                           
                     <%usdocs.forEach(function (user) {%> 
-                        <div style="margin-bottom: 10px;">
+                        <form  action = "/user/tipo/edit/<%=user._id%>" method="post">
+                        <div style="margin-bottom: 20px;">
                             <div style="color: black; display: flex;">
                                 <div style="color: black; ">
                                     <%=user.username%>
                                 </div>
                                 
                                 <div style="color: black; position: absolute; margin-left: 27%; ">
+                                    <form action="edit/<%=user._id%>" method="post">
                                     <select class="form-control" id="tipo" name="tipo" type="text"> 
                                        <option value="0" <%if(user.tipo == 0){%>selected ="selected" <%}%>>Inativo</option> 
                                        <option value="1" <%if(user.tipo == 1){%>selected ="selected" <%}%>>Habitante local</option>
@@ -75,13 +77,18 @@
                                        <option value="4" <%if(user.tipo == 4){%>selected ="selected" <%}%>>Admin</option>  
                                     </select>
                                         
-                                </div><img style="margin-left:1%;" src="image/edit.png" alt="edit" width="30" height="30">
+                                </div>
+                                <div style="color: black; position:absolute; margin-left: 38%; ">
+                                    
+                                        <a href="/edit/<%=user._id%>"><button style="margin-top: -5px; margin-left: 5px; ">Editar</button></a>
+                                    </form>
+                                </div>
                             </div>
                         </div>                        
+                    </form>
                     <%});%>
                 <br><br><br><br><br><br><br>
                     
-                </form>
             </div>
         </div>
     </div>
