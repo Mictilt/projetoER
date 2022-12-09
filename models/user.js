@@ -21,6 +21,13 @@ exports.userFindById = (id, cb) => {
         .catch(err => cb(null, err));
 };
 
+exports.userFindByUsername = (username, cb) => {
+    User.findOne({username: username},  { _id:1, username:1, email:1, tipo:1, password:1})    
+        .exec()
+        .then(doc => cb(doc))
+        .catch(err => cb(null, err));
+};
+
 exports.createUser = (userData, cb) => {
 
     const user = new User(userData);

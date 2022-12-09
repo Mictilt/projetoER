@@ -20,7 +20,7 @@
                 <label for="topic">Escolha o seu Motorista</label>
                 <select class="form-control" id="topic" name="Motorista">
                     <%udocs.forEach(function(udocs) {%>
-                        <% if (udocs.tipo == 0){%>
+                        <% if (udocs.tipo == 3){%>
                         <option value = "<%=udocs._id%>"><%=udocs.username%></option>
                         <% } %> 
                         <% });%>
