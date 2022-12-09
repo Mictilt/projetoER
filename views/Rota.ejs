@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FACIL</title>
+    <%- include('./partials/Style')%>
+    <%- include('./partials/Style_Titulo')%>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<body>
+    <% if (isAuthenticated){ %>
+    <%- include('./partials/Base_Logged')%>
+    <%} else{%>
+    <%-include('./partials/Base_Notlogged')%>
+    <%} %>
+    <main>
+        <h1 style="position:relative; margin-top:-1%; margin-left: 25%;" class="paddingt paddingl">Rotas existentes para o concelho de Cinfães </h3><br>
+            <div style="display: flex;">
+                <div style="width: 50%; height: 50%">
+                    <span id="rotas"><img style="width: 100%; height: 100%" src="image/rotas.png" alt="rotas"></span>
+                </div>
+                <div style="width: 50%; height: 50%">
+                    <span id="mapa"><img style="width: 100%; height: 100%"  src="image/cinfaes.png" alt="mapa"></span>
+                </div>
+            </div>
+            
+    </main>
+    <%-include('./partials/Footer')%>
+</body>
+</html>
