@@ -63,9 +63,11 @@ app.use('/pesquisa', pesquisaRoutes);
 const tituloRoutes = require('./routes/titulo');
 app.use('/titulo', tituloRoutes);
 const titulo = require("./models/titulo");
-//rota
-const rotaRoutes = require('./routes/rotas');
+// rota
+const rotaRoutes = require('./routes/rota');
 app.use('/rota', rotaRoutes);
+const rota = require("./models/rota");
+
 //User routes and use them as middleware, i.e. every time a request url matches '/users' the appropriate route will be followed according to the HTTP verb (app.get/post/put/patch/delete)
 const userRoutes = require('./routes/users');
 app.use('/user', userRoutes);

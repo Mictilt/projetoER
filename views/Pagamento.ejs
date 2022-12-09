@@ -14,6 +14,7 @@
     $('#mbway').remove();
     $('#paypalDados').removeAttr('hidden');
     $('#pagar').removeAttr('hidden');
+    $('#metodos').removeAttr('hidden');
      
  }
  function mb (){
@@ -22,7 +23,7 @@
     $('#mbway').remove();
     $('#mbDados').removeAttr('hidden');
     $('#pagar').removeAttr('hidden');
-
+    $('#metodos').removeAttr('hidden');
 
 }
 function mbway (){
@@ -31,6 +32,7 @@ function mbway (){
     $('#mb').remove();
     $('#mbwayDados').removeAttr('hidden');
     $('#pagar').removeAttr('hidden');
+    $('#metodos').removeAttr('hidden');
 
 }
 </script>
@@ -89,10 +91,20 @@ function mbway (){
                         <div class="criarconta divbutton">
                             <button id="btn_criarconta" type="submit" value="Submit">Pagar</button>
                         </div>
-                    </div>
+                    </div>                    
                 </div>
             </span>
+            
         </form>
+        <span id="metodos" hidden >
+            <div class="container">
+                <div class="row">
+                    <div class="criarconta divbutton">
+                        <a href="/titulo/pagamento/<%=par%>"><button id="metodos">Métodos Pagamento</button></a>
+                    </div>
+                </div>                    
+            </div>
+        </span>
     </div>
 </main>
 <%-include('./partials/Footer')%>

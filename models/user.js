@@ -38,9 +38,22 @@ exports.userList = (cb) => {
 };
 
 exports.patchUser = (id, userData, cb) => {
-
+    // console.log("--------------------");
+    // console.log(userData.password);
+    // console.log("--------------------");
     //status code 204 should be returned if we don't want to send back the updated model
-    User.findOneAndUpdate({_id: id}, userData, {new:true, overwrite:true, projection: {  _id:0, username:1, email:1, tipo:1, password:1}})
+    User.findOneAndUpdate({_id: id}, userData, {new:false, overwrite:false, projection: {  _id:0, username:0, email:0, tipo:0, password:1}})
+        .exec()
+        .then(() => cb())
+        .catch(err => cb(err));
+};
+
+exports.patchUserTipo = (id, userData, cb) => {
+    console.log("--------------------");
+    console.log(id);
+    console.log("--------------------");
+    //status code 204 should be returned if we don't want to send back the updated model
+    User.findOneAndUpdate({_id: id}, userData, {new:false, overwrite:false, projection: {  _id:0, username:0, email:0, tipo:1, password:0}})
         .exec()
         .then(() => cb())
         .catch(err => cb(err));
