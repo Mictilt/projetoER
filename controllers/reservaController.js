@@ -2,11 +2,23 @@ const reservaModel = require('../models/reserva');
 const UserModel = require('../models/user');
 
 exports.insertReserva = (req, res) => {
+    const user = req.user;
     reservaModel.createReserva(req.body, (doc, err) => {
-        console.log(req.body);
-        if(!err) res.redirect("/reserva");
-        else res.redirect("/reserva/criar");
+        if (err) res.status(500).send({message: err.message});
+        UserModel.userFindById(doc._id,(udoc,err) => {
+            if (err) res.status(500).send({message: err.message});
+            reservaModel.reservaFindById(doc.id, (unodoc, err) => {
+            const isAuthenticated = !!req.user;
+            if (!err) res.status(200).render('reservaNotificacao',{isAuthenticated, reserva:unodoc,user});
+            else res.redirect("/reserva/criar");
+            });
+        });
     });
+};
+
+exports.confirmaReserva = (req, res) => { 
+    if (!err) res.status(200).redirect("/reserva");
+     else res.redirect("/reserva/notificar");
 };
 
 exports.listReserva = (req,res) => {

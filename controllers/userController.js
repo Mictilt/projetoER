@@ -1,6 +1,4 @@
 const UserModel = require('../models/user');
-const ticketModel = require ('../models/ticket');
-const faqModel = require ('../models/faq');
 const numAgente = require('../server');
 const {userModel} = require("../models/user");
 
