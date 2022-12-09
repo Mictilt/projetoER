@@ -9,55 +9,92 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <body>
 <%- include('./partials/Base_Logged')%>
-<% 
-let numTicket = 0;
-let nomeAtual = "";
-let emailAtual = "";
-console.log(tickets.User);
-tickets.forEach(function(tickets) {
-    if (tickets.User != null) {
-    if (tickets.state==true && tickets.User._id == user.id) {
-        numTicket++;
-    } 
-    if (tickets.User._id == user.id) {
-        nomeAtual = tickets.User.username
-        emailAtual = tickets.User.email;
-    }
-}
-});
-%>
+
 <main class="utilizador flex-fill">
-    <div class="uti_detalhes">
-        <h2>Meus Detalhes:</h2>
-        <h4>Tickets Resolvidos</h4><span><%=numTicket%></span>
-        <h4>Nome</h4>
-        <%=udocs.username%>
-        <h4>Email</h4>
-        <%=udocs.email%>
+    <div style="display: flex;">
+        <div  class="uti_detalhes">
+        <div style=" color: black;">
+                <div >
+                    <h2>Meus Detalhes:</h2>
+                </div>
+                <div style="display: inline-flex; color: black;">
+                    <h4 >Nome:</h4><span><%=udocs.username%></span><br>
+                </div>
+                <div style=" color: black;">
+                    <div style="display: inline-flex; color: black;">
+                        <h4>Tipo:</h4><span>
+                            <%if(udocs.tipo == 0){%>Inativo<%}%>
+                            <%if(udocs.tipo == 1){%>Habitante local<%}%>
+                            <%if(udocs.tipo == 2){%>Visitante<%}%>
+                            <%if(udocs.tipo == 3){%>Motorista<%}%>
+                            <%if(udocs.tipo == 4){%>Admin<%}%>                
+                        </span><br>
+                    </div>
+                        
+                </div>
+                <div style="display: inline-flex; color: black;">
+                    <h4>Email:</h4><span><%=udocs.email%></span><br>    
+                </div>
+            </div>
+        </div>
+          
+    
+   
+        <div class="introdRes">
+            <h2>Alterar palavra passe:</h2>
+            <form  action = "/user/edit/<%=udocs._id%>" method="post">
+                <input type="text" id="password" name="password" placeholder="nova palavra passe"> 
+                <input type="hidden" name="username" value="<%=udocs.username%>">
+                <input type="hidden" name="email" value="<%=udocs.email%>">            
+            <button>Alterar</button>
+                </form>
+        </div>
     </div>
-    <div class="introdRes">
-        <h2>Adicionar resposta:</h2>
-        <form  action = "/user/<%=udocs._id%>" method="post">
-        <select name="responses">
-            <option value = ""></option>
-            <% fdocs.forEach(function(faq) { %>
-            <option value = "<%=faq.answer%>"><%=faq.answer%></option>
-            <% });%>
-            <% tickets.forEach(function(ticket) { %>
-            <%if(ticket.answers != ""){%>
-            <option value = "<%=ticket.answers%>"><%=ticket.answers%></option>
-            <%}%>
-            <% });%>
-        </select>
-            <input type="hidden" name="username" value="<%=udocs.username%>">
-            <input type="hidden" name="email" value="<%=udocs.email%>">
-            <input type="hidden" name="password" value="<%=udocs.password%>">
-        <button>Inserir Resposta</button>
-            </form>
+    <div>
+        <div>
+            <div style="width: 80%;"  class="uti_detalhes">
+                
+                    <div style="display: flex;">
+                        <div><h2>Nome de utilizador</h2></div>
+                        <div style="color: black; position: absolute; margin-left: 27%; "><h2>Tipo</h2></div>              
+                    </div>
+                          
+                    <%usdocs.forEach(function (user) {%> 
+                        <form  action = "/user/tipo/edit/<%=user._id%>" method="post">
+                        <div style="margin-bottom: 20px;">
+                            <div style="color: black; display: flex;">
+                                <div style="color: black; ">
+                                    <%=user.username%>
+                                </div>
+                                
+                                <div style="color: black; position: absolute; margin-left: 27%; ">
+                                    <form action="edit/<%=user._id%>" method="post">
+                                    <select class="form-control" id="tipo" name="tipo" type="text"> 
+                                       <option value="0" <%if(user.tipo == 0){%>selected ="selected" <%}%>>Inativo</option> 
+                                       <option value="1" <%if(user.tipo == 1){%>selected ="selected" <%}%>>Habitante local</option>
+                                       <option value="2" <%if(user.tipo == 2){%>selected ="selected"<%}%>>Visitante</option>
+                                       <option value="3" <%if(user.tipo == 3){%>selected ="selected"<%}%>>Motorista</option>
+                                       <option value="4" <%if(user.tipo == 4){%>selected ="selected" <%}%>>Admin</option>  
+                                    </select>
+                                        
+                                </div>
+                                <div style="color: black; position:absolute; margin-left: 38%; ">
+                                    
+                                        <a href="/edit/<%=user._id%>"><button style="margin-top: -5px; margin-left: 5px; ">Editar</button></a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>                        
+                    </form>
+                    <%});%>
+                <br><br><br><br><br><br><br>
+                    
+            </div>
+        </div>
     </div>
-    <div id="img">
-        <img src="image/farma.png">
-    </div>
+    
+    
+   
 </main>
 <%-include('./partials/Footer')%>
 </body>
