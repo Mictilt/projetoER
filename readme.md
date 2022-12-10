@@ -2,15 +2,15 @@ Título do projeto: FACIL
 Tema
 O projeto tem como finalidade a criação de uma aplicação para a gestão da mobilidade no concelho de Cinfães.
 Será possível através da aplicação pesquisar horários de carreiras, visualizar rotas, adquirir título de transporte e realizar reservas (apenas disponivel para habitantes locais).
-Com esta aplicação espera-se que as pessoas localizadas em zonas com pouco acesso a transpostes tenham uma alternativa para deslocar ao municipio onde estão localizados os vários serviços ao público.
+Com esta aplicação espera-se que as pessoas localizadas em zonas com pouco acesso a transportes tenham uma alternativa para deslocar ao município onde estão localizados os vários serviços ao público.
 
 Passos de instalação:
-1. Descarregar ficheiro projetoER.rar
-2. Extrar os ficheiros para uma pasta.
+1. Descarregar ficheiro grupo-12a-projetoER.rar
+2. Extrair os ficheiros para uma pasta.
 3. Instalar Node.js link https://nodejs.org/en/
-4. Abir linha comandos navegar até pasta do projeto
-5. executar npm start
-6. deixar janela de linha comandos a executar
+4. Abrir linha comandos navegar até pasta do projeto
+5. Executar npm start
+6. Deixar janela de linha comandos a executar
 7. Abrir Navegador (browser)
 8. Na barra de endereços colar o endereço http://localhost:3000/
 9. Pressionar enter para ser direcionado(a) para aplicação. 
@@ -39,7 +39,13 @@ Passos de instalação:
         Metodo Pagamento
             selecionar (PAYPAL, MB, MBWAY)
     Reservas
-
+        listar
+        criar
+        editar
+            Classificação
+            Comentário
+            Data e Hora
+        eliminar
     Utilizador
         Alterar palavra passe do utilizador
         Alterar tipo de utilizador (admin)
@@ -80,11 +86,11 @@ Passos de instalação:
 5. Títulos de Transporte
     Funcionalidade completa
 6. Pesquisas de frequências no município de Cinfães
-    Funcionalidade parcial não tem o ponto de origem onde o utilizador encontra-se. Assume-se que ele está na localização da carreira onde sobre a qual fez a pesquisa.
+    Funcionalidade parcial, não tem o ponto de origem onde o utilizador encontra-se. Assume-se que ele está na localização da carreira sobre a qual faz a pesquisa.
 7. Reservas
-
+    Funcionalidade completa
 8. Rotas
-    Contéudo estático não estava entre os requisitos prioritarios e não eram essencias para implementar a restante solução.
+    Contéudo estático não estava entre os requisitos prioritários e não eram essenciais para implementar a restante solução.
 
 
 ##Depencias utilizadas:
