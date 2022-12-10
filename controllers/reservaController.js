@@ -23,12 +23,16 @@ exports.confirmaReserva = (req, res) => {
 
 exports.listReserva = (req,res) => {
     reservaModel.reservaList((docs,err) => {
+        if (err) res.status(500).send({message: err.message});
         const isAuthenticated = !!req.user;
         const num = 0;
         const user = req.user;
-        console.log(typeof (docs[0].datetime));
-        if (!err) res.status(200).render('Reserva',{isAuthenticated, reservas:docs,num,user});
-        else res.status(500).send({message: err.message});
+        UserModel.userFindById(req.user.id,(udoc,err) => {
+            console.log(typeof (docs[0].datetime));
+            
+            if (!err) res.status(200).render('Reserva',{isAuthenticated, reservas:docs,num,user,udoc});
+            else res.status(500).send({message: err.message});
+        });
     });
 };
 

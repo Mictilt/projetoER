@@ -57,9 +57,11 @@
     </div>
     </div>
     </div>
+    <% if (udoc.tipo == 1 || udoc.tipo == 4){%>
         <div class="paddingt paddinglbutt paddingb">
             <a href="/reserva/criar"><button>Criar Nova Reserva</button></a>
         </div>
+    <% } %>      
 </main>
 <%-include('./partials/Footer')%>
 </body>
