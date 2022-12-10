@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>UMa Farmácia</title>
+    <title>FACIL</title>
     <%- include('./partials/Style')%>
     <%- include('./partials/Style_Utili')%>
 </head>
@@ -50,6 +50,7 @@
                 </form>
         </div>
     </div>
+    <%if(user.tipo == 4){%>
     <div>
         <div>
             <div style="width: 80%;"  class="uti_detalhes">
@@ -59,7 +60,9 @@
                         <div style="color: black; position: absolute; margin-left: 27%; "><h2>Tipo</h2></div>              
                     </div>
                           
-                    <%usdocs.forEach(function (user) {%> 
+                    <%usdocs.forEach(function (user) {%>
+                        <%if(user.tipo != 3 && user.tipo != 4 ){%><!-- não pode alterar utilizadores que são motoristas ou admin  
+                         se mudarmos o motorista o código das reservas dá erro-->
                         <form  action = "/user/tipo/edit/<%=user._id%>" method="post">
                         <div style="margin-bottom: 20px;">
                             <div style="color: black; display: flex;">
@@ -86,6 +89,7 @@
                             </div>
                         </div>                        
                     </form>
+                    <%};%>
                     <%});%>
                 <br><br><br><br><br><br><br>
                     
@@ -93,7 +97,7 @@
         </div>
 
     </div>
-    
+    <%}%>
     
    
 </main>
