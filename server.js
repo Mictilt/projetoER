@@ -108,13 +108,14 @@ passport.deserializeUser((id, cb) => {
 //Página Inicial
 app.get('/', function (req, res){
     const isAuthenticated = !!req.user;
+    const user = req.user
     if (isAuthenticated) {
         console.log(`user is authenticated, session is ${req.session.id}`);
     } else {
         console.log("unknown user");
         
     }
-    res.render('home',{isAuthenticated});
+    res.render('home',{isAuthenticated,user});
 });
 
 //Página de atendimento
