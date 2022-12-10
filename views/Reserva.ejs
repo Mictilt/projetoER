@@ -10,8 +10,8 @@
 <body>
 <%- include('./partials/Base_Logged')%>
 <main class="utilizador flex-fill" style="display: block;">
-    <h3 class = "title">Suas Reservas:<h3>
-        
+    <h3 class = "title">Suas Reservas para o Município de Cinfães:<h3>
+        <h4 class = "title">O passageiro indicará o destino:</h4>
         <div class="contentTicket">
         <div class = "ticketInfo">
         <div class="accordion paddingl" id="accordionExample">
@@ -28,6 +28,7 @@
                 <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
                     <div class="card-body faqcollapse">
                         <label class = "titleTicket">Motorista: <%=reservas.Motorista.username %></label> <br>
+                        <label class = "titleTicket">Origem: <%=reservas.Origem.nome %></label> <br>
                         <label class = "description">Data e Hora de Marcação : <%=reservas.datetime.toLocaleString() %></label><br>
                         <label class = "state" >Acompanhante : <%= ((reservas.acompanhante == true) ? "Sim" : "Não") %></label><br>
                         <label class = "state" >Mobilidade Reduzida : <%= ((reservas.mobilidadeReduzida == true) ? "Sim" : "Não") %></label><br>

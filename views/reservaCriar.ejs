@@ -25,6 +25,12 @@
                         <% } %> 
                         <% });%>
                 </select>
+                <label for="topic">Escolha a sua Origem</label>
+                <select class="form-control" id="topic" name="Origem">
+                    <%carreiras.forEach(function(carreiras) {%>
+                        <option value = "<%=carreiras._id%>"><%=carreiras.nome%></option>
+                        <% });%>
+                </select>
                 <input name ="User" type="hidden" value="<%=user.id%>">
                 <label for="mobilidadeReduzida">Mobilidade Reduzida?</label>
                 <select name ="mobilidadeReduzida">

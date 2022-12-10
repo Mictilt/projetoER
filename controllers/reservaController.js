@@ -1,5 +1,6 @@
 const reservaModel = require('../models/reserva');
 const UserModel = require('../models/user');
+const carreiraModel = require("../models/carreira");
 
 exports.insertReserva = (req, res) => {
     const user = req.user;
@@ -28,7 +29,6 @@ exports.listReserva = (req,res) => {
         const num = 0;
         const user = req.user;
         UserModel.userFindById(req.user.id,(udoc,err) => {
-            console.log(typeof (docs[0].datetime));
             
             if (!err) res.status(200).render('Reserva',{isAuthenticated, reservas:docs,num,user,udoc});
             else res.status(500).send({message: err.message});
@@ -69,10 +69,13 @@ exports.reservaGetByIdCriar = (req, res) => {
         if (err) res.status(500).send({message: err.message});
         UserModel.userList((udocs,err) => {
             if (err) res.status(500).send({message: err.message});
-            reservaModel.reservaFindById(udoc._id, (doc, err) => {
-                const isAuthenticated = !!req.user;
-                if(!err) res.status(200).render('ReservaCriar',{isAuthenticated,reserva:doc,user, udocs});
-                else res.status(500).send({message: err.message});
+            carreiraModel.carreiraList((cdocs,err) => {
+                if (err) res.status(500).send({message: err.message});
+                reservaModel.reservaFindById(udoc._id, (doc, err) => {
+                    const isAuthenticated = !!req.user;
+                    if(!err) res.status(200).render('ReservaCriar',{isAuthenticated,reserva:doc,user, udocs,carreiras:cdocs});
+                    else res.status(500).send({message: err.message});
+                });
             });
         });
     });

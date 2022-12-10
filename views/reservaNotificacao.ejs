@@ -16,6 +16,7 @@
             <form action="/reserva" method="get" style="display: flex; justify-content: center;">
                 <span>
                 <label class = "titleTicket">Motorista: <%=reserva.Motorista.username %></label> <br>
+                <label class = "titleTicket">Origem: <%=reserva.Origem.nome %></label> <br>
                 <label class = "description">Data e Hora de Marcação : <%=reserva.datetime.toLocaleString() %></label><br>
                 <label class = "state" >Acompanhante : <%= ((reserva.acompanhante == true) ? "Sim" : "Não") %></label><br>
                 <label class = "state" >Mobilidade Reduzida : <%= ((reserva.mobilidadeReduzida == true) ? "Sim" : "Não") %></label><br>

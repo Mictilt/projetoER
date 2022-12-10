@@ -15,7 +15,7 @@
             <form action="/reserva/classificacao/<%=reserva._id%> " method="post" class="formcreate">
                 <h1>Dar Classificação</h1>
                 <label class="col-lg-12 columnStyle p-3">Dê uma Classificação de 0 a 5 </label><br>
-                <input name="classificacao" type="number" placeholder="0" class="col-lg-12 columnStyle perguntainput">
+                <input name="classificacao" type="number" min="0" max="5" placeholder="0" class="col-lg-12 columnStyle perguntainput">
                 <br>
                 <div class="container">
     
