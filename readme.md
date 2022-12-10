@@ -2,7 +2,7 @@ Título do projeto: FACIL
 Tema
 O projeto tem como finalidade a criação de uma aplicação para a gestão da mobilidade no concelho de Cinfães.
 Será possível através da aplicação pesquisar horários de carreiras, visualizar rotas, adquirir título de transporte e realizar reservas (apenas disponivel para habitantes locais).
-Com está aplicação espera-se que as pessoas localizadas nem zonas com pouco acesso a transpostes tenham uma alternativa para deslocar ao municipio onde estão localizados os vários serviços ao público.
+Com esta aplicação espera-se que as pessoas localizadas nem zonas com pouco acesso a transpostes tenham uma alternativa para deslocar ao municipio onde estão localizados os vários serviços ao público.
 
 Passos de instalação:
 1. Descarregar ficheiro projetoER.rar
