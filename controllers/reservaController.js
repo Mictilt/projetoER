@@ -1,19 +1,27 @@
 const reservaModel = require('../models/reserva');
 const UserModel = require('../models/user');
 const carreiraModel = require("../models/carreira");
+const veiculoModel = require("../models/veiculo");
 
 exports.insertReserva = (req, res) => {
     const user = req.user;
     reservaModel.createReserva(req.body, (doc, err) => {
         if (err) res.status(500).send({message: err.message});
-        UserModel.userFindById(doc._id,(udoc,err) => {
-            if (err) res.status(500).send({message: err.message});
-            reservaModel.reservaFindById(doc.id, (unodoc, err) => {
-            const isAuthenticated = !!req.user;
-            if (!err) res.status(200).render('reservaNotificacao',{isAuthenticated, reserva:unodoc,user});
-            else res.redirect("/reserva/criar");
+            UserModel.userFindById(doc._id,(udoc,err) => {
+                if (err) res.status(500).send({message: err.message});
+                reservaModel.reservaFindById(doc.id, (unodoc, err) => {
+                const isAuthenticated = !!req.user;
+                if (!err) res.status(200).render('reservaNotificacao',{isAuthenticated, reserva:unodoc,user});
+                else res.redirect("/reserva/criar");
+                });
             });
-        });
+    });
+};
+
+exports.insertVeiculo = (req, res) => {
+    veiculoModel.createVeiculo(req.body, (doc, err) => {
+        if(!err) res.status(201).send({id: doc._id});
+        else res.status(500).send({message: err.message});
     });
 };
 
@@ -67,14 +75,17 @@ exports.reservaGetByIdCriar = (req, res) => {
     const user = req.user;
     UserModel.userFindById(req.user.id,(udoc,err) => {
         if (err) res.status(500).send({message: err.message});
-        UserModel.userList((udocs,err) => {
+        veiculoModel.veiculoList((vdocs,err) => {
             if (err) res.status(500).send({message: err.message});
-            carreiraModel.carreiraList((cdocs,err) => {
+            UserModel.userList((udocs,err) => {
                 if (err) res.status(500).send({message: err.message});
-                reservaModel.reservaFindById(udoc._id, (doc, err) => {
-                    const isAuthenticated = !!req.user;
-                    if(!err) res.status(200).render('ReservaCriar',{isAuthenticated,reserva:doc,user, udocs,carreiras:cdocs});
-                    else res.status(500).send({message: err.message});
+                carreiraModel.carreiraList((cdocs,err) => {
+                    if (err) res.status(500).send({message: err.message});
+                    reservaModel.reservaFindById(udoc._id, (doc, err) => {
+                        const isAuthenticated = !!req.user;
+                        if(!err) res.status(200).render('ReservaCriar',{isAuthenticated,reserva:doc,user, udocs,carreiras:cdocs,veiculos:vdocs});
+                        else res.status(500).send({message: err.message});
+                    });
                 });
             });
         });

@@ -50,6 +50,10 @@ router.post('/apagar/:id',jsonParser, function (req,res){
     reservaController.removeById(req, res);
 });
 
+router.post('/veiculo',jsonParser, function (req,res){
+    reservaController.insertVeiculo(req, res);
+});
+
 
 
 //Let's expose these routes

@@ -1,0 +1,8 @@
+POST http://localhost:3000/reserva/veiculo
+Content-Type: application/json
+
+{
+  "lotacao": "6",
+  "tipo": "ligeiro",
+  "climatizacao": "true"
+}

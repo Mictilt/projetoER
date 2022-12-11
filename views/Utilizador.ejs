@@ -18,22 +18,22 @@
                     <h2>Meus Detalhes:</h2>
                 </div>
                 <div style="display: inline-flex; color: black;">
-                    <h4 >Nome:</h4><span><%=udocs.username%></span><br>
+                    <h4 >Nome:&nbsp</h4><span><%=udocs.username%></span><br>
                 </div>
                 <div style=" color: black;">
                     <div style="display: inline-flex; color: black;">
-                        <h4>Tipo:</h4><span>
+                        <h4>Tipo:&nbsp</h4><span>
                             <%if(udocs.tipo == 0){%>Inativo<%}%>
                             <%if(udocs.tipo == 1){%>Habitante local<%}%>
                             <%if(udocs.tipo == 2){%>Visitante<%}%>
                             <%if(udocs.tipo == 3){%>Motorista<%}%>
-                            <%if(udocs.tipo == 4){%>Admin<%}%>                
+                            <%if(udocs.tipo == 4){%>Gestor<%}%>                
                         </span><br>
                     </div>
                         
                 </div>
                 <div style="display: inline-flex; color: black;">
-                    <h4>Email:</h4><span><%=udocs.email%></span><br>    
+                    <h4>Email:&nbsp</h4><span><%=udocs.email%></span><br>    
                 </div>
             </div>
         </div>

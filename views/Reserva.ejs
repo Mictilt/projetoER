@@ -29,6 +29,7 @@
                     <div class="card-body faqcollapse">
                         <label class = "titleTicket">Motorista: <%=reservas.Motorista.username %></label> <br>
                         <label class = "titleTicket">Origem: <%=reservas.Origem.nome %></label> <br>
+                        <label class = "titleTicket">Veículo utilizado: Lotação de: <%=reservas.Veiculo.lotacao%>, Tipo: <%=reservas.Veiculo.tipo%> , Possibilidade na Alteração da Climatização: <% if (reservas.Veiculo.climatizacao == true){%> Sim <% }else{ %> Não <% } %></label> <br>
                         <label class = "description">Data e Hora de Marcação : <%=reservas.datetime.toLocaleString() %></label><br>
                         <label class = "state" >Acompanhante : <%= ((reservas.acompanhante == true) ? "Sim" : "Não") %></label><br>
                         <label class = "state" >Mobilidade Reduzida : <%= ((reservas.mobilidadeReduzida == true) ? "Sim" : "Não") %></label><br>

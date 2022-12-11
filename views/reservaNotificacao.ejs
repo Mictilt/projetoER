@@ -17,10 +17,11 @@
                 <span>
                 <label class = "titleTicket">Motorista: <%=reserva.Motorista.username %></label> <br>
                 <label class = "titleTicket">Origem: <%=reserva.Origem.nome %></label> <br>
+                <label class = "titleTicket">Veículo utilizado: Lotação de: <%=reserva.Veiculo.lotacao%>, Tipo: <%=reserva.Veiculo.tipo%> , Possibilidade na Alteração da Climatização: <% if (reserva.Veiculo.climatizacao == true){%> Sim <% }else{ %> Não <% } %></label> <br>
                 <label class = "description">Data e Hora de Marcação : <%=reserva.datetime.toLocaleString() %></label><br>
                 <label class = "state" >Acompanhante : <%= ((reserva.acompanhante == true) ? "Sim" : "Não") %></label><br>
                 <label class = "state" >Mobilidade Reduzida : <%= ((reserva.mobilidadeReduzida == true) ? "Sim" : "Não") %></label><br>
-                <button id="btn_criarconta" type="submit" value="Submit">Confirmar a Reserva</button>
+                <button id="btn_criarconta" type="submit" value="Submit">Enviar Notificação</button>
                 </span>
             </form>
         </div>

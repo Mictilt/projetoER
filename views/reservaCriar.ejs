@@ -31,6 +31,12 @@
                         <option value = "<%=carreiras._id%>"><%=carreiras.nome%></option>
                         <% });%>
                 </select>
+                <label for="topic">Escolha o seu tipo de veiculo</label>
+                <select class="form-control" id="topic" name="Veiculo">
+                    <%veiculos.forEach(function(veiculos) {%>
+                        <option value = "<%=veiculos._id%>">Lotação de: <%=veiculos.lotacao%>, Tipo: <%=veiculos.tipo%> , Possibilidade na Alteração da Climatização: <% if (veiculos.climatizacao == true){%> Sim <% }else{ %> Não <% } %>  </option>
+                        <% });%>
+                </select>
                 <input name ="User" type="hidden" value="<%=user.id%>">
                 <label for="mobilidadeReduzida">Mobilidade Reduzida?</label>
                 <select name ="mobilidadeReduzida">
