@@ -46,8 +46,11 @@
     <% if (isAuthenticated){ %>
     <div class="paddingt paddinglbutt paddingb">
     <a href="/titulo/create"><button>Criar Título</button></a>
-    <a href="/titulo/pool"><button>Ver Todos Os Títulos</button></a>
+        <%if(user.tipo == 4){%>
+            <a href="/titulo/pool"><button>Ver Todos Os Títulos</button></a>
+        <% }; %>
     </div>
+   
     <%} %>
 </main>
 <%-include('./partials/Footer')%>
