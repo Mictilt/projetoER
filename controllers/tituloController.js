@@ -11,7 +11,8 @@ exports.listTitulo = (req, res) => {
     TituloModel.tituloList((docs, err) => {
         const isAuthenticated = !!req.user;
         const num = 0;
-        if(!err) res.status(200).render('titulo',{isAuthenticated,titulo:docs,num});
+        const user = req.user;
+        if(!err) res.status(200).render('titulo',{isAuthenticated,titulo:docs,num,user});
         else res.status(500).send({message: err.message});
     });
 };
