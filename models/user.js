@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 const userSchema = new mongoose.Schema({
     username: String,
     email: String,
-    tipo: String, //1 habitante local, 2 visitante, 3 motorista, 4 admin
+    tipo: String, //1 habitante local, 2 visitante, 3 motorista, 4 gestor
     password: String,
 });
 
