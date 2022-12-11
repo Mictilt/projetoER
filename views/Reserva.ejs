@@ -17,11 +17,11 @@
         <div class="accordion paddingl" id="accordionExample">
         <div class="card widthcard">
         <% reservas.forEach(function(reservas) {%>
-            <%if (reservas.User.id == user.id) {%>
+            <%if (reservas.User.id == user.id && user.tipo != 4) {%>
                 <div class="card-header colapse" id="heading<%=num%>">
                     <h2 class="m-0">
                         <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
-                            <label class = "titleTicket">Reserva de <%=reservas.datetime.toLocaleString()%> <span>&#8681;</span></label>
+                            <label class = "titleTicket"><%= user.tipo %> Reserva de <%=reservas.datetime.toLocaleString()%> Cliente: <%=reservas.User.username %> <span>&#8681;</span></label>
                         </button>
                     </h2>
                 </div>
@@ -54,7 +54,44 @@
                 </div>
             
             <%num = num + 1%>
-            <% } %> 
+            <% } if(user.tipo == 4){  %> 
+                <div class="card-header colapse" id="heading<%=num%>">
+                    <h2 class="m-0">
+                        <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
+                            <label class = "titleTicket">Reserva de <%=reservas.datetime.toLocaleString()%> Cliente: <%=reservas.User.username %> <span>&#8681;</span></label>
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapse<%=num%>" class="collapse" aria-labelledby="heading<%=num%>" data-parent="#accordionExample">
+                    <div class="card-body faqcollapse">
+                        <label class = "titleTicket">Motorista: <%=reservas.Motorista.username %></label> <br>
+                        <label class = "titleTicket">Origem: <%=reservas.Origem.nome %></label> <br>
+                        <label class = "titleTicket">Veículo utilizado: Lotação de: <%=reservas.Veiculo.lotacao%>, Tipo: <%=reservas.Veiculo.tipo%> , Possibilidade na Alteração da Climatização: <% if (reservas.Veiculo.climatizacao == true){%> Sim <% }else{ %> Não <% } %></label> <br>
+                        <label class = "description">Data e Hora de Marcação : <%=reservas.datetime.toLocaleString() %></label><br>
+                        <label class = "state" >Acompanhante : <%= ((reservas.acompanhante == true) ? "Sim" : "Não") %></label><br>
+                        <label class = "state" >Mobilidade Reduzida : <%= ((reservas.mobilidadeReduzida == true) ? "Sim" : "Não") %></label><br>
+                        <hr style="border-top: 10px solid rgb(72 69 69);;">
+                        <% if(reservas.comentario != null) {%>
+                        <label class = "titleTicket">Comentário feito: <%=reservas.comentario %></label> <br>
+                        <% } %>
+                        <% if(reservas.classificacao != null) {%>
+                        <label class = "titleTicket">Classificação dada: <%=reservas.classificacao %>/5</label> <br>
+                        <% } %>
+                        <% if(reservas.comentario == null) {%>
+                        <a href = "comentario/<%=reservas._id%>"><button class = "buttonTicket">Dar Comentário</button></a>
+                        <% } %>
+                        <% if(reservas.classificacao == null) {%>
+                        <a href = "classificacao/<%=reservas._id%>"><button class = "buttonTicket">Dar Classificação</button></a>
+                        <% } %>
+                        <a href = "editar/<%=reservas._id%>"><button class = "buttonTicket">Editar Reserva</button></a>
+                        <form action="apagar/<%=reservas._id%>" method="post" style="padding-top: 10px;">
+                        <a href = "apagar/<%=reservas._id%>"><button class = "buttonTicket">Apagar Reserva</button></a>
+                        </form>
+                    </div>      
+                </div>
+            
+            <%num = num + 1%>
+            <% } %>
         <% });%>
     </div>
     </div>

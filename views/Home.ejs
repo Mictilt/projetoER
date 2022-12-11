@@ -18,9 +18,9 @@
        <div>
             <ul class="main_but">
             <% if (isAuthenticated){ %>
-                <% if (user.tipo != 2){ %>
+                <% if (user.tipo != 2 && user.tipo != 0){ %>
                     <li><a href="/reserva"><button>Reservas</button></a></li>
-                <% if (user.tipo != 3 && user.tipo != 1 ){ %>
+                <% if (user.tipo != 3 && user.tipo != 1 && user.tipo != 0){ %>
                 <li><a href="/carreira"><button>Carreiras</button></a></li>
                 <li><a href="/frequencia"><button>Frequências</button></a></li>
                 <li><a href="/horario"><button>Horário</button></a></li>
