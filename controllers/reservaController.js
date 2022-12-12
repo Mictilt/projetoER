@@ -14,15 +14,15 @@ exports.insertReserva = (req, res) => {
                         service: 'gmail',
                         auth: {
                           user: 'jvmiguelv@gmail.com',
-                          pass: 'yourpassword'
+                          pass: 'zcwhlgqzfuviujvo'
                         }
                       });
                       
                       var mailOptions = {
-                        from: 'youremail@gmail.com',
-                        to: 'myfriend@yahoo.com',
-                        subject: 'Sending Email using Node.js',
-                        text: 'That was easy!'
+                        from: 'jvmiguelv@gmail.com',
+                        to: 'jvmiguelito235@gmail.com',
+                        subject: 'Notificação da Reserva feita',
+                        text: 'Motorista:'+ unodoc.Motorista.username+ '\n'+'Origem:'+unodoc.Carreira.nome+'\n'+'Veículo utilizado:'+unodoc.Veiculo,
                       };
                       
                       transporter.sendMail(mailOptions, function(error, info){
