@@ -18,7 +18,8 @@
     <div class="accordion paddingl" id="accordionExample">
         <div class="card widthcard">
             <% titulo.forEach(function (titulo) {%>
-                <%if(user.username == titulo.nome || user.tipo == 4){%>                                  
+                <!-- <%=user._id%> ---- <%=titulo.User._id%>  -->
+                <%if(user._id.equals(titulo.User._id)  || user.tipo == 4){%>                                  
                     <div class="card-header colapse" id="heading<%=num%>">
                        <div>
                         <h2 class="m-0">

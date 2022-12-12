@@ -1,4 +1,5 @@
 const TituloModel = require('../models/titulo');
+const UserModel = require('../models/user');
 
 exports.insert = (req, res) => {
     TituloModel.createTitulo(req.body, (doc, err) => {
