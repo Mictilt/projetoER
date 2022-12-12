@@ -17,12 +17,36 @@ exports.insertReserva = (req, res) => {
                           pass: 'zcwhlgqzfuviujvo'
                         }
                       });
-                      
+                      var Motorista = unodoc.Motorista.username;
+                      var Origem = unodoc.Origem.nome;
+                      var lotacao = unodoc.Veiculo.lotacao;
+                      var tipo = unodoc.Veiculo.tipo;
+                      if(unodoc.Veiculo.climatizacao == true){
+                            var climatizacao = "Sim";
+                        }
+                        else{
+                            var climatizacao = "Não";
+                        }
+                        var Data = unodoc.datetime.toLocaleString()
+                        if(unodoc.acompanhante == true){
+                            var acompanhante = "Sim";
+                        }
+                        else{
+                            var acompanhante = "Não";
+                        }
+                        if(unodoc.mobilidadeReduzida == true){
+                            var mobilidadeReduzida = "Sim";
+                        }
+                        else{
+                            var mobilidadeReduzida = "Não";
+                        }
                       var mailOptions = {
                         from: 'jvmiguelv@gmail.com',
                         to: 'jvmiguelito235@gmail.com',
                         subject: 'Notificação da Reserva feita',
-                        text: 'Motorista:'+ unodoc.Motorista.username+ '\n'+'Origem:'+unodoc.Carreira.nome+'\n'+'Veículo utilizado:'+unodoc.Veiculo,
+                        text: 'A informação da reserva feita foi:'+'\n'+'Motorista: '+ Motorista+ '\n'+'Origem: '+Origem+'\n'+'Veículo utilizado com Lotação de: '+ lotacao + 
+                        ', Tipo: '+ tipo + ', Possibilidade na Alteração da Climatização: '+ climatizacao +'\n'+'Data e Hora de Marcação:'+ Data
+                        +'\n'+'Acompanhante: ' + acompanhante +'\n'+'Mobilidade Reduzida: ' + mobilidadeReduzida
                       };
                       
                       transporter.sendMail(mailOptions, function(error, info){
