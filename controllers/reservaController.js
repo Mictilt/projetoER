@@ -2,7 +2,7 @@ const reservaModel = require('../models/reserva');
 const UserModel = require('../models/user');
 const carreiraModel = require("../models/carreira");
 const veiculoModel = require("../models/veiculo");
-
+var nodemailer = require('nodemailer');
 exports.insertReserva = (req, res) => {
     const user = req.user;
     reservaModel.createReserva(req.body, (doc, err) => {
@@ -10,6 +10,28 @@ exports.insertReserva = (req, res) => {
             UserModel.userFindById(doc._id,(udoc,err) => {
                 if (err) res.status(500).send({message: err.message});
                 reservaModel.reservaFindById(doc.id, (unodoc, err) => {
+                    var transporter = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                          user: 'jvmiguelv@gmail.com',
+                          pass: 'yourpassword'
+                        }
+                      });
+                      
+                      var mailOptions = {
+                        from: 'youremail@gmail.com',
+                        to: 'myfriend@yahoo.com',
+                        subject: 'Sending Email using Node.js',
+                        text: 'That was easy!'
+                      };
+                      
+                      transporter.sendMail(mailOptions, function(error, info){
+                        if (error) {
+                          console.log(error);
+                        } else {
+                          console.log('Email sent: ' + info.response);
+                        }
+                      });
                 const isAuthenticated = !!req.user;
                 if (!err) res.status(200).render('reservaNotificacao',{isAuthenticated, reserva:unodoc,user});
                 else res.redirect("/reserva/criar");

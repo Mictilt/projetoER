@@ -5,6 +5,7 @@ const fetch = require('node-fetch');
 const User = require("../models/user");
 const Carreira = require("./carreira");
 const Veiculo = require("./veiculo");
+
 //Our user schema
 const reservaSchema = new mongoose.Schema({
     User: 
