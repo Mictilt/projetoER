@@ -33,7 +33,7 @@
                         <label class = "description">Data e Hora de Marcação : <%=reservas.datetime.toLocaleString() %></label><br>
                         <label class = "state" >Acompanhante : <%= ((reservas.acompanhante == true) ? "Sim" : "Não") %></label><br>
                         <label class = "state" >Mobilidade Reduzida : <%= ((reservas.mobilidadeReduzida == true) ? "Sim" : "Não") %></label><br>
-                        <label class = "titleTicket">Estado: Aberto</label> <br>
+                        <label class = "titleTicket">Estado: <%= ((reservas.datetime > new Date()) ? "Aberto" : "Fechado") %> </label> <br>
                         <hr style="border-top: 10px solid rgb(72 69 69);;">
                         <% if(reservas.comentario != null) {%>
                         <label class = "titleTicket">Comentário feito: <%=reservas.comentario %></label> <br>
@@ -71,7 +71,7 @@
                         <label class = "description">Data e Hora de Marcação : <%=reservas.datetime.toLocaleString() %></label><br>
                         <label class = "state" >Acompanhante : <%= ((reservas.acompanhante == true) ? "Sim" : "Não") %></label><br>
                         <label class = "state" >Mobilidade Reduzida : <%= ((reservas.mobilidadeReduzida == true) ? "Sim" : "Não") %></label><br>
-                        <label class = "titleTicket">Estado: Aberto</label> <br>
+                        <label class = "titleTicket">Estado: <%= ((reservas.datetime > new Date()) ? "Aberto" : "Fechado") %></label> <br>
                         <hr style="border-top: 10px solid rgb(72 69 69);;">
                         <% if(reservas.comentario != null) {%>
                         <label class = "titleTicket">Comentário feito: <%=reservas.comentario %></label> <br>
