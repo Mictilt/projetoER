@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 //app
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 80;
 app.set('view engine', 'ejs');
 app.use(express.static('assets'));
 app.use(express.static(path.join(__dirname, 'public')))
@@ -169,5 +169,5 @@ exports.numAgente = function() {
     return numAgentes;
 }
 server.listen(port, function () {
-        console.log(`application is running at: http://localhost:${port}`);
+        console.log(`application is running at: http://facil:${port}`);
 });

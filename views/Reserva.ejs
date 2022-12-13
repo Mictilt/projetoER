@@ -77,12 +77,6 @@
                         <% if(reservas.classificacao != null) {%>
                         <label class = "titleTicket">Classificação dada: <%=reservas.classificacao %>/5</label> <br>
                         <% } %>
-                        <% if(reservas.comentario == null) {%>
-                        <a href = "comentario/<%=reservas._id%>"><button class = "buttonTicket">Dar Comentário</button></a>
-                        <% } %>
-                        <% if(reservas.classificacao == null) {%>
-                        <a href = "classificacao/<%=reservas._id%>"><button class = "buttonTicket">Dar Classificação</button></a>
-                        <% } %>
                         <a href = "editar/<%=reservas._id%>"><button class = "buttonTicket">Editar Reserva</button></a>
                         <form action="apagar/<%=reservas._id%>" method="post" style="padding-top: 10px;">
                         <a href = "apagar/<%=reservas._id%>"><button class = "buttonTicket">Cancelar Reserva</button></a>
