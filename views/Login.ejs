@@ -14,10 +14,12 @@
         var passwordValue = $("#password").val();
         if (nameValue == ''){
             $("#validName").html("campo de utilizador vazio");
-            $("#validName").css("background-color","red");
+            $("#validName").css("color","#0000FF");
+            $("#validName").css("font-weight","bold");
             if (passwordValue == ''){
                 $("#validPassword").html("campo de palavra passe vazio");
-                $("#validPassword").css("color","red");
+                $("#validPassword").css("color","#0000FF");
+                $("#validPassword").css("font-weight","bold");
                 event.preventDefault();    
             }
             event.preventDefault();
