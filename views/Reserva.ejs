@@ -21,7 +21,7 @@
                 <div class="card-header colapse" id="heading<%=num%>">
                     <h2 class="m-0">
                         <button class="btn btn-link btn-block text-left collapsed faqcollapse" type="button" data-toggle="collapse" data-target="#collapse<%=num%>" aria-expanded="true" aria-controls="collapse<%=num%>">
-                            <label class = "titleTicket"><%= user.tipo %> Reserva de <%=reservas.datetime.toLocaleString()%> Cliente: <%=reservas.User.username %> <span>&#8681;</span></label>
+                            <label class = "titleTicket">Reserva de <%=reservas.datetime.toLocaleString()%> Cliente: <%=reservas.User.username %> <span>&#8681;</span></label>
                         </button>
                     </h2>
                 </div>
@@ -41,10 +41,10 @@
                         <% if(reservas.classificacao != null) {%>
                         <label class = "titleTicket">Classificação dada: <%=reservas.classificacao %>/5</label> <br>
                         <% } %>
-                        <% if(reservas.comentario == null) {%>
+                        <% if(reservas.comentario == null && reservas.datetime < new Date()) {%>
                         <a href = "comentario/<%=reservas._id%>"><button class = "buttonTicket">Dar Comentário</button></a>
                         <% } %>
-                        <% if(reservas.classificacao == null) {%>
+                        <% if(reservas.classificacao == null && reservas.datetime < new Date()) {%>
                         <a href = "classificacao/<%=reservas._id%>"><button class = "buttonTicket">Dar Classificação</button></a>
                         <% } %>
                         <a href = "editar/<%=reservas._id%>"><button class = "buttonTicket">Editar Reserva</button></a>
