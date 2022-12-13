@@ -5,12 +5,53 @@
     <title>FACIL</title>
     <%- include('./partials/Style')%>
     <%- include('./partials/Style_Utili')%>
+    <%var atualP = udocs.password;%>
+
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+    function validaPassword(event){
+        
+        var oldP = $('input[name="passwordO"]').val();
+        var newP = $('input[name="password"]').val();
+        var newPV = $('input[name="passwordV"]').val();
+        var getAtualP = <%= udocs.password %>; 
+        if(oldP == getAtualP){
+            if(newP == '' && newPV == ''){
+                // nova pass
+                $("#passwordNV").html("password nova nula");
+                $("#passwordNV").css("color","#0000FF");
+                $("#passwordNV").css("font-weight","bold");                                
+                // nova pass verificação
+                $("#passwordVV").html("password nova nula");
+                $("#passwordVV").css("color","#0000FF");
+                $("#passwordVV").css("font-weight","bold");
+                event.preventDefault();
+            }
+                else{
+                    if(newP == newPV ){
+                        alert("Palavra passe alterada!");
+                        
+                    }
+                    else{
+                        event.preventDefault();
+                    }
+                }                                    
+                        
+        }
+        else{
+            $("#passwordOV").html("password invalida");
+            $("#passwordOV").css("color","#0000FF");
+            $("#passwordOV").css("font-weight","bold");
+            event.preventDefault();
+        }
+    }
+</script>
 <body>
 <%- include('./partials/Base_Logged')%>
 
 <main class="utilizador flex-fill">
+    <!-- <%=udocs.password%> -->
     <div style="display: flex;">
         <div  class="uti_detalhes">
         <div style=" color: black;">
@@ -40,13 +81,18 @@
           
     
    
-        <div class="introdRes">
+        <div class="introdPass">
             <h2>Alterar palavra passe:</h2>
             <form  action = "/user/edit/<%=udocs._id%>" method="post">
-                <input type="text" id="password" name="password" placeholder="nova palavra passe"> 
+                <input class="inputP" type="text" id="passwordO" name="passwordO" placeholder="palavra passe atual"><br>
+                <span id="passwordOV"></span>
+                <input class="inputP"  type="text" id="password" name="password" placeholder="nova palavra passe"><br>
+                <span id="passwordNV"></span>
+                <input class="inputP"  type="text" id="passwordV" name="passwordV" placeholder="verificar nova palavra passe"><br>
+                <span id="passwordVV"></span>
                 <input type="hidden" name="username" value="<%=udocs.username%>">
                 <input type="hidden" name="email" value="<%=udocs.email%>">            
-            <button>Alterar</button>
+            <button style="margin-left: 20%; margin-top: 8px;" onclick="validaPassword(event)">Alterar</button>
                 </form>
         </div>
     </div>
