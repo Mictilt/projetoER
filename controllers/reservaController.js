@@ -13,8 +13,8 @@ exports.insertReserva = (req, res) => {
                     var transporter = nodemailer.createTransport({
                         service: 'gmail',
                         auth: {
-                          user: 'grupo12a.er@gmail.com',
-                          pass: 'ckjganmfohgcwogx'
+                        user: 'grupo12a.er@gmail.com',
+                        pass: 'ckjganmfohgcwogx'
                         }
                       });
                       var Motorista = unodoc.Motorista.username;
