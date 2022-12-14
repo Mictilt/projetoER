@@ -18,6 +18,7 @@ exports.insertReserva = (req, res) => {
                         }
                       });
                       var Motorista = unodoc.Motorista.username;
+                      var email = req.user.email;
                       var Origem = unodoc.Origem.nome;
                       var lotacao = unodoc.Veiculo.lotacao;
                       var tipo = unodoc.Veiculo.tipo;
@@ -42,7 +43,7 @@ exports.insertReserva = (req, res) => {
                         }
                       var mailOptions = {
                         from: 'jvmiguelv@gmail.com',
-                        to: 'jvmiguelito235@gmail.com',
+                        to: email,
                         subject: 'Notificação da Reserva feita',
                         text: 'A informação da reserva feita foi:'+'\n'+'Motorista: '+ Motorista+ '\n'+'Origem: '+Origem+'\n'+'Veículo utilizado com Lotação de: '+ lotacao + 
                         ', Tipo: '+ tipo + ', Possibilidade na Alteração da Climatização: '+ climatizacao +'\n'+'Data e Hora de Marcação:'+ Data
