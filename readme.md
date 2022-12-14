@@ -29,8 +29,8 @@ Modificar tipo de utilizador entrar como gestor navegar para utilizador para alt
 
 Conta de email onde estão encaminhadas as notificações:
 Credencias de acesso
-Utilizador:
-Pass:
+Utilizador: grupo12a.er@gmail.com
+Pass: pass123#
 
 ## Etapas de implementação
 
