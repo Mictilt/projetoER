@@ -14,7 +14,7 @@ exports.insertReserva = (req, res) => {
                         service: 'gmail',
                         auth: {
                           user: 'grupo12a.er@gmail.com',
-                          pass: 'pass123#'
+                          pass: 'ckjganmfohgcwogx'
                         }
                       });
                       var Motorista = unodoc.Motorista.username;
