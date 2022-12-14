@@ -96,6 +96,19 @@ exports.listCreateHorario = (req, res) => {
     });
 };
 
+exports.newlistCreateHorario = (req, res) => {
+    const user = req.user;
+    const isAuthenticated = !!req.user;
+    const num = 0;
+    FrequenciaModel.frequenciaList((fdocs, err) => {
+        if (err) res.status(500).send({ message: err.message });
+        CarreiraModel.carreiraList((cdocs, err) => {
+            if (!err) res.status(200).render('newhorariocreate', { isAuthenticated, frequencia: fdocs, carreira: cdocs, user, num });
+            else res.status(500).send({ message: err.message });
+        });
+
+    });
+};
 
 exports.listHorarioPool = (req, res) => {
     HorarioModel.horarioList((docs, err) => {

@@ -2,7 +2,7 @@ const CarreiraModel = require('../models/carreira');
 
 exports.insert = (req, res) => {
     CarreiraModel.createCarreira(req.body, (doc, err) => {
-        if(!err) res.redirect("/carreira");
+        if(!err) res.redirect("/horario/newcreate");
         else res.redirect("/carreira/create");
     });
 };

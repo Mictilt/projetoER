@@ -2,7 +2,7 @@ const FrequenciaModel = require('../models/frequencia');
 
 exports.insert = (req, res) => {
     FrequenciaModel.createFrequencia(req.body, (doc, err) => {
-        if(!err) res.redirect("/frequencia");
+        if(!err) res.redirect("/horario/newcreate");
         else res.redirect("/frequencia/create");
     });
 };

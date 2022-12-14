@@ -1,5 +1,6 @@
 var express = require('express');
 var horarioController = require('../controllers/horarioController');
+var carreiraController = require('../controllers/carreiraController');
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 
@@ -18,6 +19,10 @@ router.get('/create', function (req, res) {
     horarioController.listCreateHorario(req,res);
 });
 
+
+
+
+
 router.post('/create', jsonParser, function (req, res) {
     //create horario
     horarioController.insert(req, res);
@@ -28,6 +33,17 @@ router.get('/create', function (req, res) {
     const user = req.user;
     res.render('horariocreate', {isAuthenticated,user,res});
 });
+
+router.get('/newcreate', function (req, res) {
+    horarioController.newlistCreateHorario(req,res);
+});
+
+router.post('/newcreate', jsonParser, function (req, res) {
+    //create horario
+    console.log("****************passou aqui**********");
+    carreiraController.insert(req, res);
+});
+
 router.get('/edit/:id', jsonParser, function (req, res) {
     horarioController.getById(req, res)
 });
