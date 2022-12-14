@@ -13,7 +13,24 @@ Passos de instalação:
 6. Deixar janela de linha comandos a executar
 7. Abrir Navegador (browser)
 8. Na barra de endereços colar o endereço http://localhost:3000/
-9. Pressionar enter para ser direcionado(a) para aplicação. 
+9. Pressionar enter para ser direcionado(a) para aplicação.
+
+Nota.: a base dados está alojada num servidor externo é necessário ligação a internet para realizar testes ao protótipo.
+
+Utilizadores disponiveis para teste:
+Utilizador      pass     Tipo
+gestor          123      admin
+ana             123      habitante local
+emanuelg        123      motorista
+visitante       123      visitante
+
+Logo do site é o botão home.
+Modificar tipo de utilizador entrar como gestou navegar para utilizador para alterar tipos.
+
+conta de email onde estão encaminhados as notificações:
+Credencias de acesso
+Utilizador:
+Pass:
 
 ## Etapas de implementação
 
