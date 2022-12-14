@@ -169,5 +169,5 @@ exports.numAgente = function() {
     return numAgentes;
 }
 server.listen(port, function () {
-        console.log(`application is running at: http://facil:${port}`);
+        console.log(`application is running at: http://localhost:${port}`);
 });
