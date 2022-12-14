@@ -25,9 +25,9 @@ emanuelg        123      motorista
 visitante       123      visitante
 
 Logo do site é o botão home.
-Modificar tipo de utilizador entrar como gestou navegar para utilizador para alterar tipos.
+Modificar tipo de utilizador entrar como gestor navegar para utilizador para alterar tipos.
 
-conta de email onde estão encaminhados as notificações:
+Conta de email onde estão encaminhadas as notificações:
 Credencias de acesso
 Utilizador:
 Pass:
