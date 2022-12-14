@@ -13,8 +13,8 @@ exports.insertReserva = (req, res) => {
                     var transporter = nodemailer.createTransport({
                         service: 'gmail',
                         auth: {
-                          user: 'jvmiguelv@gmail.com',
-                          pass: 'zcwhlgqzfuviujvo'
+                          user: 'grupo12a.er@gmail.com',
+                          pass: 'pass123#'
                         }
                       });
                       var Motorista = unodoc.Motorista.username;
@@ -42,7 +42,7 @@ exports.insertReserva = (req, res) => {
                             var mobilidadeReduzida = "Não";
                         }
                       var mailOptions = {
-                        from: 'jvmiguelv@gmail.com',
+                        from: 'grupo12a.er@gmail.com',
                         to: email,
                         subject: 'Notificação da Reserva feita',
                         text: 'A informação da reserva feita foi:'+'\n'+'Motorista: '+ Motorista+ '\n'+'Origem: '+Origem+'\n'+'Veículo utilizado com Lotação de: '+ lotacao + 
