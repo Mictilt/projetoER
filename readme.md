@@ -27,8 +27,11 @@ visitante       123      visitante
 Logo do site é o botão home.
 Modificar tipo de utilizador entrar como gestor navegar para utilizador para alterar tipos.
 
-Conta de email onde estão encaminhadas as notificações:
+Conta de email para onde são encaminhadas as notificações:
 Credencias de acesso
+Utilizador: grupo12a.notificacao@gmail.com
+Pass: pass1234#
+Conta de envio:
 Utilizador: grupo12a.er@gmail.com
 Pass: pass123#
 
